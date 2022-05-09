@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android UI Design</string>
+    <string name="splash_screen_title_text_nutrice">Nutrice.</string>
+    <string name="splash_screen_tagline_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt et, volutpat duis amet, risus.</string>
 </resources>
