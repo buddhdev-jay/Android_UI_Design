@@ -8,10 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DayNight">
+        android:theme="@style/Theme.AndroidUIDesign">
         <activity
             android:name=".onboardingscreen.OnBoardingActivity"
-            android:theme="@style/Theme.Material3.DayNight"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"

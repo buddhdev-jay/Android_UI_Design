@@ -7,32 +7,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiduidesign.R
+import com.example.androiduidesign.databinding.SplashScreenItemContainerLayoutBinding
 
-class OnboardingAdapter(val onBoardingItems: ArrayList<OnBoardingItemsModel>) :
+class OnboardingAdapter(private val onBoardingItems: ArrayList<OnBoardingItemsModel>) :
     RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {
 
-    class OnboardingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val splashScreenImageView: ImageView = itemView.findViewById(R.id.imgview_splash_screen)
-        val splashScreenHeadertextView: TextView =
-            itemView.findViewById(R.id.txtview_splash_screen_heading)
-        val splashScreenTagLinetextView: TextView =
-            itemView.findViewById(R.id.txtview_splash_screen_tagline)
+    lateinit var binding : SplashScreenItemContainerLayoutBinding
+    class OnboardingViewHolder(binding:SplashScreenItemContainerLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.splash_screen_item_container_layout, parent, false)
-        return OnboardingViewHolder(view)
+        binding = SplashScreenItemContainerLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return OnboardingViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: OnboardingViewHolder, position: Int) {
-        holder.apply {
-            with(onBoardingItems[position]) {
-                splashScreenHeadertextView.text = title
-                splashScreenImageView.setImageResource(image)
-                splashScreenTagLinetextView.text = description
-            }
-        }
+      binding.viewModel = onBoardingItems[position]
     }
 
     override fun getItemCount(): Int {

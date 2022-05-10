@@ -9,4 +9,6 @@
     <string name="onboarding_des_item_two">There are many discount coupons that you can use with big discount.</string>
     <string name="onboarding_title_item_three">Face Id Feature for Easy Access and Secure Transactions</string>
     <string name="onboarding_des_item_three">There is a face ID feature that can be used with easy access and safe transactions.</string>
+    <string name="splash_screen_btn_txt_get_started">Get Started</string>
+
 </resources>
