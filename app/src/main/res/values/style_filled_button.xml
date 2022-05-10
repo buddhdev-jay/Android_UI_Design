@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FilledbuttonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="cornerRadius">@dimen/_100sdp</item>
+        <item name="backgroundColor">@color/green_700</item>
+        <item name="textEndPadding">@dimen/_12sdp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="font">@font/manropebold</item>
+    </style>
+</resources>
