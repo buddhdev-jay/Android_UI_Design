@@ -61,6 +61,8 @@
             android:padding="@dimen/_12ssp"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_signIn_email_header" />
 
@@ -96,6 +98,8 @@
                 android:cursorVisible="true"
                 android:focusable="true"
                 android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:maxLength="10"
                 android:maxLines="1" />
 
@@ -118,7 +122,7 @@
             android:id="@+id/textview_forget_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_24sdp"
             android:fontFamily="@font/manropesemibold"
             android:text="@string/textview_text_forgot_password"
@@ -187,6 +191,7 @@
             android:layout_marginStart="@dimen/_24sdp"
             android:layout_marginTop="@dimen/_32sdp"
             android:layout_marginEnd="@dimen/_24sdp"
+            android:background="@color/white"
             android:drawableStart="@drawable/face_id_icone"
             android:drawablePadding="10dp"
             android:fontFamily="@font/manropemedium"
@@ -205,7 +210,8 @@
             android:layout_marginStart="@dimen/_24sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_24sdp"
-            android:drawableStart="@drawable/face_id_icone"
+            android:background="@color/white"
+            android:drawableStart="@drawable/google_icone"
             android:drawablePadding="10dp"
             android:fontFamily="@font/manropemedium"
             android:paddingStart="@dimen/_50sdp"
@@ -223,7 +229,8 @@
             android:layout_marginStart="@dimen/_24sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_24sdp"
-            android:drawableStart="@drawable/face_id_icone"
+            android:background="@color/white"
+            android:drawableStart="@drawable/facebook_icone"
             android:drawablePadding="10dp"
             android:fontFamily="@font/manropemedium"
             android:paddingStart="@dimen/_50sdp"
@@ -238,31 +245,32 @@
             android:id="@+id/textview_nothaveaccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_60sdp"
             android:layout_marginTop="@dimen/_50sdp"
-            android:text="@string/textview_text_not_have_account"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_facebook"
-            android:textSize="@dimen/_12ssp"
-            android:textColor="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/_50sdp"
-            android:fontFamily="@font/manropemedium"/>
+            android:fontFamily="@font/manropemedium"
+            android:text="@string/textview_text_not_have_account"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_facebook" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_50sdp"
-            android:text="@string/textview_text_sign_in"
-            app:layout_constraintStart_toEndOf="@id/textview_nothaveaccount"
-            app:layout_constraintTop_toBottomOf="@id/btn_facebook"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_50sdp"
             android:layout_marginBottom="@dimen/_50sdp"
-            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/manropemedium"
+            android:text="@string/textview_text_sign_ip"
             android:textColor="@color/green_500"
+            android:textSize="@dimen/_12ssp"
             app:fontFamily="@font/manropesemibold"
-            android:fontFamily="@font/manropemedium"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textview_nothaveaccount"
+            app:layout_constraintTop_toBottomOf="@id/btn_facebook" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -21,6 +21,7 @@
     <string name="btn_text_google">Continue with Google</string>
     <string name="btn_text_facebook">Continue with Facebook</string>
     <string name="textview_text_sign_in">Sign in</string>
+    <string name="textview_text_sign_up">Sign up</string>
     <string name="textview_text_not_have_account">I don’t have a account?</string>
 
 </resources>
