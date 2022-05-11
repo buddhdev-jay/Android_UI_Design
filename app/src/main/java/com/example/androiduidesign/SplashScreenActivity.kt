@@ -10,16 +10,22 @@ import com.example.androiduidesign.authencation.SignInActivity
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 
 class SplashScreenActivity : AppCompatActivity() {
+    lateinit var handler : Handler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,SignInActivity::class.java))
+
+        handler  = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            startActivity(Intent(this,OnBoardingActivity::class.java))
             finish()
         }, 2000)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
     }
 }

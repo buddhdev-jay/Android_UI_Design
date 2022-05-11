@@ -55,9 +55,9 @@
                 style="@style/editextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
+                android:textCursorDrawable="@drawable/cursor_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_signIn_email_header" />
 
@@ -93,6 +93,7 @@
                     android:cursorVisible="true"
                     android:focusable="true"
                     android:imeOptions="actionDone"
+                    android:textSize="@dimen/_10ssp"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />

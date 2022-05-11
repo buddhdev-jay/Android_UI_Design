@@ -30,6 +30,8 @@
     <string name="textview_text_phone_number">Phone Number</string>
     <string name="terms_and_condtion_text_checkbox"><![CDATA[I accepted all terms & conditions.]]></string>
     <string name="password_type_weak">Weak</string>
+    <string name="password_type_medium">Medium</string>
+    <string name="empty">""</string>
     <string-array name="countryCodes">
     <item>93,AF</item>
     <item>355,AL</item>
