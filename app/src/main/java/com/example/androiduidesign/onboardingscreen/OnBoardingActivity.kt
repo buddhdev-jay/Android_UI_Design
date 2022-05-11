@@ -23,12 +23,8 @@ class OnBoardingActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_on_boarding)
         supportActionBar?.hide()
         setAdapter()
-        TabLayoutMediator(tab_layout, binding.viewpagerOnboarding) { tab, position ->
-        }.attach()
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+        TabLayoutMediator(tab_layout, binding.viewpagerOnboarding) { tab, position -> }.attach()
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         binding.btnOnBoading.setOnClickListener {
             if (viewpager_onboarding.currentItem + 1 < onBoardingadapter?.itemCount ?: 0) {
                 viewpager_onboarding.setCurrentItem(viewpager_onboarding.currentItem + 1)

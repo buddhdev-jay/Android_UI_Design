@@ -17,8 +17,6 @@ class SignInActivity : AppCompatActivity() {
 
         binding.textviewSignup.setOnClickListener {
             startActivity(Intent(this,SignupActivity::class.java))
-
         }
-
     }
 }

@@ -21,12 +21,6 @@ class SignupActivity : AppCompatActivity() {
         val adapter = ArrayAdapter.createFromResource(this, R.array.countryCodes, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCountryCode.adapter = adapter
-
-        val passwordbarone = false
-        val passwordbartwo = false
-        val passwordbarthree = false
-        val passwordbarfour = false
-
         binding.editxtSignupPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 //Will be Implemented Later
