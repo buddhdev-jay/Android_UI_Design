@@ -10,5 +10,17 @@
     <string name="onboarding_title_item_three">Face Id Feature for Easy Access and Secure Transactions</string>
     <string name="onboarding_des_item_three">There is a face ID feature that can be used with easy access and safe transactions.</string>
     <string name="splash_screen_btn_txt_get_started">Get Started</string>
+    <string name="txtview_header_sign_in">Sign in</string>
+    <string name="txtview_signnin_tagline">Please sign in first to enjoy the service.</string>
+    <string name="txtview_text_email">Email</string>
+    <string name="txtview_text_password">Password</string>
+    <string name="checkbox_text_remeber_me">Remember me?</string>
+    <string name="textview_text_forgot_password">Forgot password?</string>
+    <string name="btn_text_sign_in">Sign In</string>
+    <string name="btn_text_face_id">Continue with Face Id</string>
+    <string name="btn_text_google">Continue with Google</string>
+    <string name="btn_text_facebook">Continue with Facebook</string>
+    <string name="textview_text_sign_in">Sign in</string>
+    <string name="textview_text_not_have_account">I don’t have a account?</string>
 
 </resources>
