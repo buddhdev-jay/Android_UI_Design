@@ -26,7 +26,6 @@ class SignupActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         val adapter = ArrayAdapter.createFromResource(this, R.array.countryCodes, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
         imgview_backarrow.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
@@ -36,16 +35,19 @@ class SignupActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         signupViewModel.password.observe(this) { password ->
             if (password.length >= 8) {
+                var passwordStausupdate = 1
+                if (password.toString().contains("[0-9]".toRegex())) {
+                    passwordStausupdate += 1
+                }
+                if (password.toString().contains("[a-z]".toRegex())) {
+                    passwordStausupdate += 1
+                }
+                if (password.toString().contains("[A-Z]".toRegex())) {
+                    passwordStausupdate += 1
+                }
+                signupViewModel.passwordStatus.value = passwordStausupdate
+            } else {
                 signupViewModel.passwordStatus.value = 1
-            }
-            if( password.length >= 8 && password.toString().contains("[A-Z]".toRegex())) {
-                signupViewModel.passwordStatus.value = 2
-            }
-            if(password.length >= 8 && password.toString().contains("[a-z]".toRegex())){
-                signupViewModel.passwordStatus.value = 3
-            }
-            if( password.length >= 8 && password.toString().contains("[0-9]".toRegex() )&& password.length >= 8 && password.toString().contains("[a-z]".toRegex()) &&  password.toString().contains("[A-Z]".toRegex())){
-                signupViewModel.passwordStatus.value = 4
             }
         }
     }
