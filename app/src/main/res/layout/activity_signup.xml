@@ -253,38 +253,32 @@
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_confirm_password" />
+            <Spinner
+                android:id="@+id/spinner_country_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintEnd_toStartOf="@id/edi_txt_signup_phone_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_signup_phone_number_header" />
 
-            <LinearLayout
-                android:id="@+id/linear_phone_number"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edi_txt_signup_phone_number"
+                style="@style/edit_textStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/textview_signup_phone_number_header"
-               app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="@dimen/_24sdp"
-                app:layout_constraintStart_toStartOf="@id/textview_signup_phone_number_header">
-                <Spinner
-                    android:id="@+id/spinner_country_code"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.4"
-                    android:spinnerMode="dropdown" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edi_txt_signup_phone_number"
-                    style="@style/edit_textStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:layout_margin="0dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/manropesemibold"
-                    android:imeOptions="actionDone"
-                    android:inputType="phone"
-                    android:maxLength="10"
-                    android:textCursorDrawable="@drawable/cursor_style" />
-            </LinearLayout>
-
+                android:background="@drawable/edit_text_border"
+                android:fontFamily="@font/manropesemibold"
+               android:layout_marginStart="0dp"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:textCursorDrawable="@drawable/cursor_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/spinner_country_code"
+                app:layout_constraintTop_toBottomOf="@id/textview_signup_phone_number_header" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/checkbox_terms_and_condition"
@@ -297,7 +291,7 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linear_phone_number" />
+                app:layout_constraintTop_toBottomOf="@id/edi_txt_signup_phone_number" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signup"
