@@ -51,6 +51,10 @@
     <string name="textview_forgot_password">Forgot password</string>
     <string name="textview_text_forget_password_tag_line">Please choose one way to find your password again.</string>
     <string name="sample_email">********@mail.com</string>
+    <string name="txt_view_text_phone_number">Phone Number</string>
+    <string name="txt_sample_phone">**** **** **** 2345</string>
+    <string name="textview_text_do_you_remember">Do you remember your password? Sign in</string>
+    <string name="toast_text_send_code">Send Code Button Clicked</string>
     <string-array name="countryCodes">
         <item>93,AF</item>
         <item>355,AL</item>

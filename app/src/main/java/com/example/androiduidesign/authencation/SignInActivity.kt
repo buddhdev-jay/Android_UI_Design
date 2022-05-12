@@ -21,7 +21,7 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intialSetup()
+        initialSetup()
         binding.textviewNotHaveAccount.setOnClickListener {
             startActivity(Intent(this,SignupActivity::class.java))
         }
@@ -44,6 +44,9 @@ class SignInActivity : AppCompatActivity() {
             btnGoogle.setOnClickListener {
                 Toast.makeText(this@SignInActivity,getString(R.string.google_clicked),Toast.LENGTH_SHORT).show()
             }
+            textviewForgetPassword.setOnClickListener {
+                startActivity(Intent(this@SignInActivity,ForgetPasswordActivity::class.java))
+            }
         }
     }
 
@@ -65,7 +68,7 @@ class SignInActivity : AppCompatActivity() {
         binding.textviewNotHaveAccount.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    private fun intialSetup() {
+    private fun initialSetup() {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         setSpannableText()
