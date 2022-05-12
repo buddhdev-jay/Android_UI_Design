@@ -51,8 +51,8 @@
                 app:layout_constraintTop_toBottomOf="@id/textview_signIn_tagline" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editxt_signIn_email"
-                style="@style/editextStyle"
+                android:id="@+id/edi_txt_signIn_email"
+                style="@style/edit_textStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -72,10 +72,10 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editxt_signIn_email" />
+                app:layout_constraintTop_toBottomOf="@id/edi_txt_signIn_email" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtlayout_password"
+                android:id="@+id/txt_layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -101,7 +101,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_remeber_me"
+                android:id="@+id/checkbox_remember_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -111,7 +111,7 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_forget_password"
@@ -124,7 +124,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signIn"
@@ -159,7 +159,7 @@
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_22sdp"
                 android:fontFamily="@font/manropemedium"
-                android:text="or"
+                android:text="@string/text_or"
                 android:textAlignment="center"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10ssp"
@@ -181,7 +181,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_face_id"
-                style="@style/socialmediabutton"
+                style="@style/social_media_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -195,7 +195,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_google"
-                style="@style/socialmediabutton"
+                style="@style/social_media_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -208,7 +208,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_facebook"
-                style="@style/socialmediabutton"
+                style="@style/social_media_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -221,10 +221,9 @@
                 app:layout_constraintTop_toBottomOf="@id/btn_google" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_nothaveaccount"
+                android:id="@+id/textview_not_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_60sdp"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginBottom="@dimen/_50sdp"
                 android:fontFamily="@font/manropemedium"
@@ -232,23 +231,8 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_facebook" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:layout_marginBottom="@dimen/_50sdp"
-                android:fontFamily="@font/manropemedium"
-                android:text="@string/textview_text_sign_up"
-                android:textColor="@color/green_500"
-                android:textSize="@dimen/_12ssp"
-                app:fontFamily="@font/manropesemibold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/textview_nothaveaccount"
                 app:layout_constraintTop_toBottomOf="@id/btn_facebook" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

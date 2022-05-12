@@ -20,7 +20,7 @@
             tools:context=".authencation.SignupActivity">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgview_backarrow"
+                android:id="@+id/img_view_back_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -39,11 +39,11 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp"
                 app:fontFamily="@font/manropesemibold"
-                app:layout_constraintStart_toEndOf="@id/imgview_backarrow"
+                app:layout_constraintStart_toEndOf="@id/img_view_back_arrow"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtview_singup_tagline"
+                android:id="@+id/txt_view_sing_up_tagline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
@@ -54,7 +54,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textview_signup_header" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_signup_fullname_header"
+                android:id="@+id/textview_signup_full_name_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -64,11 +64,11 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtview_singup_tagline" />
+                app:layout_constraintTop_toBottomOf="@id/txt_view_sing_up_tagline" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editxt_signup_fullname"
-                style="@style/editextStyle"
+                android:id="@+id/edi_txt_signup_full_name"
+                style="@style/edit_textStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_border"
@@ -77,7 +77,7 @@
                 android:inputType="textPersonName"
                 android:textCursorDrawable="@drawable/cursor_style"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_signup_fullname_header" />
+                app:layout_constraintTop_toBottomOf="@id/textview_signup_full_name_header" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_email_header"
@@ -90,11 +90,11 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editxt_signup_fullname" />
+                app:layout_constraintTop_toBottomOf="@id/edi_txt_signup_full_name" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editxt_signup_email"
-                style="@style/editextStyle"
+                android:id="@+id/edi_txt_signup_email"
+                style="@style/edit_textStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/manropesemibold"
@@ -115,7 +115,7 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editxt_signup_email" />
+                app:layout_constraintTop_toBottomOf="@id/edi_txt_signup_email" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_password_type_header"
@@ -128,10 +128,10 @@
                 android:textColor="@{(viewModel.passwordStatus == 1 ? @color/red: (viewModel.passwordStatus == 2 ? @color/yellow : (viewModel.passwordStatus == 3 ? @color/yellow : (viewModel.passwordStatus == 4 ? @color/green_500 : @color/red))))}"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editxt_signup_email" />
+                app:layout_constraintTop_toBottomOf="@id/edi_txt_signup_email" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtlayout_password"
+                android:id="@+id/txt_layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -142,7 +142,7 @@
                 app:passwordToggleEnabled="true">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/editxt_signup_password"
+                    android:id="@+id/edi_txt_signup_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_border"
@@ -150,48 +150,48 @@
                     android:focusable="true"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
-                    android:textSize="@dimen/_12ssp"
-                    android:text="@={viewModel.password}"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="@={viewModel.password}"
+                    android:textSize="@dimen/_12ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <View
-                android:id="@+id/passwordbar_one"
+                android:id="@+id/password_bar_one"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@{viewModel.passwordStatus >= 1 ? @color/green_700 : @color/grey }"
-                app:layout_constraintEnd_toStartOf="@id/passwordbar_two"
+                app:layout_constraintEnd_toStartOf="@id/password_bar_two"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <View
-                android:id="@+id/passwordbar_two"
+                android:id="@+id/password_bar_two"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@{viewModel.passwordStatus >= 2 ? @color/green_700 : @color/grey }"
-                app:layout_constraintEnd_toStartOf="@id/passwordbar_three"
-                app:layout_constraintStart_toEndOf="@id/passwordbar_one"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintEnd_toStartOf="@id/password_bar_three"
+                app:layout_constraintStart_toEndOf="@id/password_bar_one"
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <View
-                android:id="@+id/passwordbar_three"
+                android:id="@+id/password_bar_three"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@{viewModel.passwordStatus >= 3 ? @color/green_700 : @color/grey }"
-                app:layout_constraintEnd_toStartOf="@id/passwordbar_four"
-                app:layout_constraintStart_toEndOf="@id/passwordbar_two"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintEnd_toStartOf="@id/password_bar_four"
+                app:layout_constraintStart_toEndOf="@id/password_bar_two"
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <View
-                android:id="@+id/passwordbar_four"
+                android:id="@+id/password_bar_four"
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -199,8 +199,8 @@
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:background="@{viewModel.passwordStatus == 4 ? @color/green_700 : @color/grey }"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/passwordbar_three"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintStart_toEndOf="@id/password_bar_three"
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_confirm_password_header"
@@ -213,10 +213,10 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_password" />
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtlayout_confirm_password"
+                android:id="@+id/txt_layout_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -227,22 +227,22 @@
                 app:passwordToggleEnabled="true">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/editxt_signup_confirm_password"
+                    android:id="@+id/edi_txt_signup_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_border"
                     android:cursorVisible="true"
                     android:focusable="true"
                     android:imeOptions="actionNext"
-                    android:textSize="@dimen/_12ssp"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textSize="@dimen/_12ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_signup_phonenumber_header"
+                android:id="@+id/textview_signup_phone_number_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -252,35 +252,42 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtlayout_confirm_password" />
+                app:layout_constraintTop_toBottomOf="@id/txt_layout_confirm_password" />
 
-            <Spinner
-                android:id="@+id/spinner_country_code"
+            <LinearLayout
+                android:id="@+id/linear_phone_number"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                app:layout_constraintStart_toEndOf="@id/editxt_signup_phonenumber"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_signup_phonenumber_header" />
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/textview_signup_phone_number_header"
+               app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/_24sdp"
+                app:layout_constraintStart_toStartOf="@id/textview_signup_phone_number_header">
+                <Spinner
+                    android:id="@+id/spinner_country_code"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.4"
+                    android:spinnerMode="dropdown" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editxt_signup_phonenumber"
-                style="@style/editextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_border"
-                android:fontFamily="@font/manropesemibold"
-                android:imeOptions="actionDone"
-                android:inputType="phone"
-                android:maxLength="10"
-                android:textCursorDrawable="@drawable/cursor_style"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/spinner_country_code"
-                app:layout_constraintTop_toBottomOf="@id/textview_signup_phonenumber_header" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edi_txt_signup_phone_number"
+                    style="@style/edit_textStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:layout_margin="0dp"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/manropesemibold"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@drawable/cursor_style" />
+            </LinearLayout>
+
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_termsandcondition"
+                android:id="@+id/checkbox_terms_and_condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -290,7 +297,7 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editxt_signup_phonenumber" />
+                app:layout_constraintTop_toBottomOf="@id/linear_phone_number" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_signup"
@@ -305,39 +312,22 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
-                app:layout_constraintTop_toBottomOf="@id/checkbox_termsandcondition" />
+                app:layout_constraintTop_toBottomOf="@id/checkbox_terms_and_condition" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_nothaveaccount"
+                android:id="@+id/textview_not_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_60sdp"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginBottom="@dimen/_50sdp"
                 android:fontFamily="@font/manropemedium"
-                android:text="@string/textview_text_not_have_account"
+                android:text="@string/textview_text_i_have_account"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_signup" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:layout_marginBottom="@dimen/_50sdp"
-                android:fontFamily="@font/manropemedium"
-                android:text="@string/textview_text_sign_in"
-                android:textColor="@color/green_500"
-                android:textSize="@dimen/_12ssp"
-                app:fontFamily="@font/manropesemibold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/textview_nothaveaccount"
-                app:layout_constraintTop_toBottomOf="@id/btn_signup" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
