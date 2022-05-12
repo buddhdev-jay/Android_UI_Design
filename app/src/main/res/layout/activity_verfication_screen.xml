@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.androiduidesign.authencation.VerificationViewModel" />
+    </data>
 
 
     <ScrollView
@@ -55,6 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_60sdp"
+                android:text="@={viewModel.editTextOne}"
                 android:layout_marginTop="@dimen/_50sdp"
                 app:layout_constraintEnd_toStartOf="@+id/edit_text_otp_two"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
+                android:text="@={viewModel.editTextTwo}"
                 app:layout_constraintEnd_toStartOf="@+id/edit_text_otp_three"
                 app:layout_constraintStart_toEndOf="@+id/edit_text_otp_one"
                 app:layout_constraintTop_toBottomOf="@id/txt_view_forget_password_tagline" />
@@ -76,6 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
+                android:text="@={viewModel.editTextThree}"
                 app:layout_constraintEnd_toStartOf="@+id/edit_text_otp_four"
                 app:layout_constraintStart_toEndOf="@+id/edit_text_otp_two"
                 app:layout_constraintTop_toBottomOf="@id/txt_view_forget_password_tagline" />
@@ -87,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_60sdp"
+                android:text="@={viewModel.editTextFour}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edit_text_otp_three"
                 app:layout_constraintTop_toBottomOf="@id/txt_view_forget_password_tagline" />

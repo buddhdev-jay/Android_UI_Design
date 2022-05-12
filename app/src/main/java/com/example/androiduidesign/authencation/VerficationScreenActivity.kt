@@ -15,6 +15,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
@@ -24,27 +25,61 @@ import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_
 
 class VerficationScreenActivity : AppCompatActivity() {
     lateinit var binding: ActivityVerficationScreenBinding
+    val verficationViewModel: VerificationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verfication_screen)
         initialSetup()
+
+        verficationViewModel.editTextOne.observe(this) {
+            if (it.length == 1) {
+                binding.editTextOtpTwo.requestFocus()
+            }
+        }
+        verficationViewModel.editTextTwo.observe(this) {
+            if (it.length == 1) {
+                binding.editTextOtpThree.requestFocus()
+            }
+            if (it.isEmpty()) {
+                binding.editTextOtpOne.requestFocus()
+            }
+        }
+        verficationViewModel.editTextThree.observe(this) {
+            if (it.length == 1) {
+                binding.editTextOtpFour.requestFocus()
+            }
+            if (it.isEmpty()) {
+                binding.editTextOtpTwo.requestFocus()
+            }
+        }
+        verficationViewModel.editTextFour.observe(this) {
+            if (it.length == 1) {
+                binding.editTextOtpFour.clearFocus()
+                val hidekeyboard = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                hidekeyboard?.hideSoftInputFromWindow(binding.editTextOtpFour.windowToken, 0)
+            }
+            if (it.isEmpty()) {
+                binding.editTextOtpThree.requestFocus()
+            }
+        }
     }
 
     private fun initialSetup() {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_verfication_screen)
         setSpannableText()
-        configureOtp(null,binding.editTextOtpOne,binding.editTextOtpTwo)
-        configureOtp(binding.editTextOtpOne,binding.editTextOtpTwo,binding.editTextOtpThree)
-        configureOtp(binding.editTextOtpTwo,binding.editTextOtpThree,binding.editTextOtpFour)
-        configureOtp(binding.editTextOtpThree,binding.editTextOtpFour,null)
+        binding.apply {
+            viewModel = verficationViewModel
+            lifecycleOwner = this@VerficationScreenActivity
+        }
     }
+
     private fun setSpannableText() {
         val spannable = SpannableString(binding.textviewUpdateNumber.text)
         val clickableSpan2: ClickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
-                val signInIntent = Intent(this@VerficationScreenActivity,ForgetPasswordActivity::class.java)
+                val signInIntent = Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
                 startActivity(signInIntent)
                 finish()
             }
@@ -57,37 +92,5 @@ class VerficationScreenActivity : AppCompatActivity() {
         spannable.setSpan(clickableSpan2, 20, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewUpdateNumber.text = spannable
         binding.textviewUpdateNumber.movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    private fun configureOtp(beforeEdittext: EditText?, currentEdittext: EditText, afterEdittext: EditText?) {
-        currentEdittext.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                //Will be implemented Later
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, count: Int) {
-                if (count == 1) {
-                    afterEdittext?.let { afterEdittext.requestFocus() } ?: run {
-                        currentEdittext.clearFocus()
-                        val hidekeyboard = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-                        hidekeyboard?.hideSoftInputFromWindow(currentEdittext.windowToken, 0)
-                    }
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                //Will be implemented Later
-            }
-
-        })
-        currentEdittext.setOnKeyListener(View.OnKeyListener { view, i, keyEvent ->
-            if (i == KeyEvent.KEYCODE_DEL && currentEdittext.text.isEmpty()) {
-               beforeEdittext?.let { beforeEdittext.requestFocus() } ?: run {
-                    val hidekeyboard = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-                    hidekeyboard?.hideSoftInputFromWindow(currentEdittext.windowToken, 0)
-                }
-            }
-            return@OnKeyListener false
-        })
     }
 }
