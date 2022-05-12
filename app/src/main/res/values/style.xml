@@ -19,6 +19,7 @@
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:drawablePadding">@dimen/_10sdp</item>
         <item name="fontFamily">@font/manropemedium</item>
+        <item name="android:background">@color/transparent</item>
     </style>
     <style name="otp_edit_text" parent="ThemeOverlay.AppCompat">
         <item name="android:fontFamily">@font/manropebold</item>

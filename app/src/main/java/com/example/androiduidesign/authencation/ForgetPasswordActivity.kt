@@ -9,6 +9,7 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -20,6 +21,7 @@ import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 import com.example.androiduidesign.utils.THIRTYEIGHT
 import com.example.androiduidesign.utils.THIRTYONE
 import kotlinx.android.synthetic.main.activity_forget_password.check_box_email
+import kotlinx.android.synthetic.main.activity_forget_password.img_view_back_arrow_forget_password
 
 class ForgetPasswordActivity : AppCompatActivity() {
     lateinit var binding: ActivityForgetPasswordBinding
@@ -42,6 +44,10 @@ class ForgetPasswordActivity : AppCompatActivity() {
                 startActivity(Intent(this@ForgetPasswordActivity, VerficationScreenActivity::class.java))
                 finish()
             }
+            img_view_back_arrow_forget_password.setOnClickListener {
+                startActivity(Intent(this@ForgetPasswordActivity, SignInActivity::class.java))
+                finish()
+            }
         }
     }
 
@@ -53,6 +59,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
             viewModel = forgetPasswordViewModel
             lifecycleOwner = this@ForgetPasswordActivity
         }
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     private fun setSpannableText() {

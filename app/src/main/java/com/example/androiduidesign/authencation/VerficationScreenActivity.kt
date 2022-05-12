@@ -13,8 +13,10 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.KeyEvent
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
@@ -23,7 +25,10 @@ import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
 import com.example.androiduidesign.utils.THIRTYTHREE
 import com.example.androiduidesign.utils.TWENTY
+import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_four
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_one
+import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_three
+import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_two
 
 class VerficationScreenActivity : AppCompatActivity() {
     lateinit var binding: ActivityVerficationScreenBinding
@@ -65,6 +70,17 @@ class VerficationScreenActivity : AppCompatActivity() {
                 binding.editTextOtpThree.requestFocus()
             }
         }
+        binding.imgViewBackArrowOtp.setOnClickListener {
+            startActivity(Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java))
+            finish()
+        }
+        binding.btnVerify.setOnClickListener {
+            if (edit_text_otp_one.toString().isNullOrEmpty() && edit_text_otp_two.toString().isNullOrEmpty() && edit_text_otp_three.toString().isNullOrEmpty() && edit_text_otp_four.toString().isNullOrEmpty()){
+                Toast.makeText(this,getString(R.string.toast_verfication_button_tapped),Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this,getString(R.string.toast_enter_otp),Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun initialSetup() {
@@ -75,6 +91,7 @@ class VerficationScreenActivity : AppCompatActivity() {
             viewModel = verficationViewModel
             lifecycleOwner = this@VerficationScreenActivity
         }
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     private fun setSpannableText() {
