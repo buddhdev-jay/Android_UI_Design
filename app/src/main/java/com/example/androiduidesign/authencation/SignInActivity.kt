@@ -27,12 +27,16 @@ class SignInActivity : AppCompatActivity() {
         }
         binding.apply {
             btnSignIn.setOnClickListener {
-                if(this.ediTxtSignInEmail.toString().isEmpty()){
-                    Toast.makeText(this@SignInActivity,getString(R.string.toast_email_empty), Toast.LENGTH_SHORT).show()
-                } else if (this.editxtSignInPassword.toString().isEmpty()){
-                    Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@SignInActivity,getString(R.string.sign_in_btn_clicked),Toast.LENGTH_SHORT).show()
+                when {
+                    this.ediTxtSignInEmail.toString().isEmpty() -> {
+                        Toast.makeText(this@SignInActivity,getString(R.string.toast_email_empty), Toast.LENGTH_SHORT).show()
+                    }
+                    this.editxtSignInPassword.toString().isEmpty() -> {
+                        Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        Toast.makeText(this@SignInActivity,getString(R.string.sign_in_btn_clicked),Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
             btnFaceId.setOnClickListener {

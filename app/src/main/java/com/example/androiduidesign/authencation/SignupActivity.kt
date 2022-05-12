@@ -39,20 +39,28 @@ class SignupActivity : AppCompatActivity() {
         }
         btn_signup.setOnClickListener {
             binding.apply {
-                if(this.ediTxtSignupFullName.toString().isEmpty()) {
-                    Toast.makeText(this@SignupActivity,getString(R.string.toast_name_empty),Toast.LENGTH_SHORT).show()
-                } else if(this.ediTxtSignupEmail.toString().isEmpty()) {
-                    Toast.makeText(this@SignupActivity,getString(R.string.toast_email_empty),Toast.LENGTH_SHORT).show()
-                } else  if(this.ediTxtSignupPassword.toString().isEmpty()) {
-                    Toast.makeText(this@SignupActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
-                } else if (this.ediTxtSignupConfirmPassword.toString().isEmpty()) {
+                when {
+                    this.ediTxtSignupFullName.toString().isEmpty() -> {
+                        Toast.makeText(this@SignupActivity,getString(R.string.toast_name_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    this.ediTxtSignupEmail.toString().isEmpty() -> {
+                        Toast.makeText(this@SignupActivity,getString(R.string.toast_email_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    this.ediTxtSignupPassword.toString().isEmpty() -> {
+                        Toast.makeText(this@SignupActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    this.ediTxtSignupConfirmPassword.toString().isEmpty() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_confirm_password),Toast.LENGTH_SHORT).show()
-                } else if (this.ediTxtSignupPhoneNumber.toString().isEmpty()){
-                    Toast.makeText(this@SignupActivity,getString(R.string.toast_phone_empty) ,Toast.LENGTH_SHORT).show()
-                } else if (this.ediTxtSignupPhoneNumber.length() < 10 ){
-                    Toast.makeText(this@SignupActivity,getString(R.string.toast_valid_phone),Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@SignupActivity,getString(R.string.signup_btn_clicked),Toast.LENGTH_SHORT).show()
+                    }
+                    this.ediTxtSignupPhoneNumber.toString().isEmpty() -> {
+                        Toast.makeText(this@SignupActivity,getString(R.string.toast_phone_empty) ,Toast.LENGTH_SHORT).show()
+                    }
+                    this.ediTxtSignupPhoneNumber.length() < 10 -> {
+                        Toast.makeText(this@SignupActivity,getString(R.string.toast_valid_phone),Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        Toast.makeText(this@SignupActivity,getString(R.string.signup_btn_clicked),Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

@@ -253,6 +253,7 @@
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_confirm_password" />
+
             <Spinner
                 android:id="@+id/spinner_country_code"
                 android:layout_width="wrap_content"
@@ -269,9 +270,9 @@
                 style="@style/edit_textStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
                 android:background="@drawable/edit_text_border"
                 android:fontFamily="@font/manropesemibold"
-               android:layout_marginStart="0dp"
                 android:imeOptions="actionDone"
                 android:inputType="phone"
                 android:maxLength="10"

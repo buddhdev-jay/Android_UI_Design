@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.example.androiduidesign.authencation.VerificationViewModel" />
@@ -60,8 +62,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_60sdp"
-                android:text="@={viewModel.editTextOne}"
                 android:layout_marginTop="@dimen/_50sdp"
+                android:text="@={viewModel.editTextOne}"
                 app:layout_constraintEnd_toStartOf="@+id/edit_text_otp_two"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_view_forget_password_tagline" />
@@ -129,6 +131,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@id/text_view_text_resend_code" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_update_number"
                 android:layout_width="0dp"

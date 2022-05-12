@@ -93,10 +93,10 @@
                     android:cursorVisible="true"
                     android:focusable="true"
                     android:imeOptions="actionDone"
-                    android:textSize="@dimen/_10ssp"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textSize="@dimen/_10ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
