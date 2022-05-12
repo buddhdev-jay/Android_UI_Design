@@ -48,6 +48,9 @@
     <string name="face_id_clicked">Face Id Clicked</string>
     <string name="facebook_clicked">FaceBook Button  Clicked</string>
     <string name="google_clicked">Google Button Clicked</string>
+    <string name="textview_forgot_password">Forgot password</string>
+    <string name="textview_text_forget_password_tag_line">Please choose one way to find your password again.</string>
+    <string name="sample_email">********@mail.com</string>
     <string-array name="countryCodes">
         <item>93,AF</item>
         <item>355,AL</item>
