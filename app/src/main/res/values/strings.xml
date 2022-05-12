@@ -55,6 +55,11 @@
     <string name="txt_sample_phone">**** **** **** 2345</string>
     <string name="textview_text_do_you_remember">Do you remember your password? Sign in</string>
     <string name="toast_text_send_code">Send Code Button Clicked</string>
+    <string name="textview_text_verfication_header">Verification code</string>
+    <string name="textview_text_verfication_tag_line">Please check your phone. We have to sent the code verification to your mobile number.</string>
+    <string name="textview_text_resend_code_timer">Resend code in 00:56</string>
+    <string name="brn_text_verify">Verify</string>
+    <string name="text_view_text_update_number">Wrong phone number? Update number</string>
     <string-array name="countryCodes">
         <item>93,AF</item>
         <item>355,AL</item>

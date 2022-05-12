@@ -10,15 +10,18 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityForgetPasswordBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
+import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 import kotlinx.android.synthetic.main.activity_forget_password.check_box_email
 
 class ForgetPasswordActivity : AppCompatActivity() {
     lateinit var binding: ActivityForgetPasswordBinding
+    val forgetPasswordViewModel : ForgetPasswordViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,25 +29,16 @@ class ForgetPasswordActivity : AppCompatActivity() {
 
         binding.apply {
             checkBoxEmail.setOnCheckedChangeListener { _, value ->
-                if (!value){
-                    checkBoxEmail.isChecked = false
-                    checkBoxPhone.isChecked = true
-                } else {
-                    checkBoxEmail.isChecked = true
-                    checkBoxPhone.isChecked = false
-                }
+                checkBoxEmail.isChecked = value
+                checkBoxPhone.isChecked = !value
             }
             checkBoxPhone.setOnCheckedChangeListener { _, value ->
-                 if (!value){
-                    checkBoxEmail.isChecked = true
-                    checkBoxPhone.isChecked = false
-                } else {
-                    checkBoxEmail.isChecked = false
-                    checkBoxPhone.isChecked = true
-                }
+                checkBoxPhone.isChecked = value
+                checkBoxEmail.isChecked = !value
             }
             btnSendCodeForgetPassword.setOnClickListener {
-                Toast.makeText(this@ForgetPasswordActivity,getString(R.string.toast_text_send_code), Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@ForgetPasswordActivity, VerficationScreenActivity::class.java))
+                finish()
             }
         }
     }
@@ -53,6 +47,10 @@ class ForgetPasswordActivity : AppCompatActivity() {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this,R.layout.activity_forget_password)
         setSpannableText()
+        binding.apply {
+            viewModel = forgetPasswordViewModel
+            lifecycleOwner = this@ForgetPasswordActivity
+        }
     }
 
     private fun setSpannableText() {
