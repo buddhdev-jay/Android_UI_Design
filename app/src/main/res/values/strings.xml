@@ -32,6 +32,9 @@
     <string name="password_type_weak">Weak</string>
     <string name="password_type_medium">Medium</string>
     <string name="empty">""</string>
+    <string name="numeric_regex">[0-9]</string>
+    <string name="small_alphabet_regex">[a-z]</string>
+    <string name="upper_alphabet_regex">[A-Z]</string>
     <string-array name="countryCodes">
     <item>93,AF</item>
     <item>355,AL</item>

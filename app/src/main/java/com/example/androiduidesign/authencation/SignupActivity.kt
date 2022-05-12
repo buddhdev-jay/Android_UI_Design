@@ -19,36 +19,44 @@ import kotlinx.android.synthetic.main.activity_signup.imgview_backarrow
 class SignupActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignupBinding
     val signupViewModel : SignupViewModel by viewModels()
+    lateinit var adapter: ArrayAdapter<CharSequence>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
-        val adapter = ArrayAdapter.createFromResource(this, R.array.countryCodes, android.R.layout.simple_spinner_item)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        intialSetup()
         imgview_backarrow.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }
-        binding.viewModel = signupViewModel
-        binding.spinnerCountryCode.adapter = adapter
-        binding.lifecycleOwner = this
+
         signupViewModel.password.observe(this) { password ->
             if (password.length >= 8) {
                 var passwordStausupdate = 1
-                if (password.toString().contains("[0-9]".toRegex())) {
+                if (password.toString().contains(getString(R.string.numeric_regex).toRegex())) {
                     passwordStausupdate += 1
                 }
-                if (password.toString().contains("[a-z]".toRegex())) {
+                if (password.toString().contains(getString(R.string.small_alphabet_regex).toRegex())) {
                     passwordStausupdate += 1
                 }
-                if (password.toString().contains("[A-Z]".toRegex())) {
+                if (password.toString().contains(getString(R.string.upper_alphabet_regex).toRegex())) {
                     passwordStausupdate += 1
                 }
                 signupViewModel.passwordStatus.value = passwordStausupdate
             } else {
-                signupViewModel.passwordStatus.value = 1
+                signupViewModel.passwordStatus.value = 0
             }
+        }
+    }
+
+    private fun intialSetup() {
+        supportActionBar?.hide()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
+        adapter = ArrayAdapter.createFromResource(this, R.array.countryCodes, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.apply {
+            viewModel = signupViewModel
+            spinnerCountryCode.adapter = adapter
+            lifecycleOwner = this@SignupActivity
         }
     }
 }

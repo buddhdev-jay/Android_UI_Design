@@ -124,8 +124,8 @@
                 android:layout_marginTop="@dimen/_24sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:fontFamily="@font/manropesemibold"
-                android:text="@{(viewModel.passwordStatus == 1 ? @string/password_type_weak: (viewModel.passwordStatus == 2 ? @string/password_type_medium : (viewModel.passwordStatus == 3 ? @string/password_type_medium : (viewModel.passwordStatus == 4 ? @string/password_status_strong : @string/password_type_weak))))}"
-                android:textColor="@color/green_500"
+                android:text="@{(viewModel.passwordStatus == 1 ? @string/password_type_weak: (viewModel.passwordStatus == 2 ? @string/password_type_medium : (viewModel.passwordStatus == 3 ? @string/password_type_medium : (viewModel.passwordStatus == 4 ? @string/password_status_strong : @string/empty))))}"
+                android:textColor="@{(viewModel.passwordStatus == 1 ? @color/red: (viewModel.passwordStatus == 2 ? @color/yellow : (viewModel.passwordStatus == 3 ? @color/yellow : (viewModel.passwordStatus == 4 ? @color/green_500 : @color/red))))}"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editxt_signup_email" />
