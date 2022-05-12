@@ -21,6 +21,10 @@ import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivitySignupBinding
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
+import com.example.androiduidesign.utils.NINETEEN
+import com.example.androiduidesign.utils.ONE
+import com.example.androiduidesign.utils.TWENTYSIX
+import com.example.androiduidesign.utils.ZERO
 import kotlinx.android.synthetic.main.activity_signup.btn_signup
 import kotlinx.android.synthetic.main.activity_signup.img_view_back_arrow
 
@@ -68,21 +72,21 @@ class SignupActivity : AppCompatActivity() {
         signupViewModel.password.observe(this) { password ->
             password.apply {
                 if (this.isNotEmpty()) {
-                    var passwordstatusupdate = 1
+                    var passwordstatusupdate = ONE
                     if (this.length >= 8) {
                         if (this.toString().contains(getString(R.string.numeric_regex).toRegex())) {
-                            passwordstatusupdate += 1
+                            passwordstatusupdate += ONE
                         }
                         if (this.toString().contains(getString(R.string.small_alphabet_regex).toRegex())) {
-                            passwordstatusupdate += 1
+                            passwordstatusupdate += ONE
                         }
                         if (this.toString().contains(getString(R.string.upper_alphabet_regex).toRegex())) {
-                            passwordstatusupdate += 1
+                            passwordstatusupdate += ONE
                         }
                     }
                     signupViewModel.passwordStatus.value = passwordstatusupdate
                 } else {
-                    signupViewModel.passwordStatus.value = 0
+                    signupViewModel.passwordStatus.value = ZERO
                 }
             }
         }
@@ -114,7 +118,7 @@ class SignupActivity : AppCompatActivity() {
                 ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
             }
         }
-        spannable.setSpan(clickableSpan2, 19, 26, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan2, NINETEEN, TWENTYSIX, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewNotHaveAccount.text = spannable
         binding.textviewNotHaveAccount.movementMethod = LinkMovementMethod.getInstance()
     }

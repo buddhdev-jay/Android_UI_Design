@@ -55,14 +55,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_full_name_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:fontFamily="@font/manropesemibold"
+                style="@style/edit_text_header"
                 android:text="@string/textview_text_full_name"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_view_sing_up_tagline" />
 
@@ -81,14 +75,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_email_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:fontFamily="@font/manropesemibold"
+                style="@style/edit_text_header"
                 android:text="@string/txtview_text_email"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edi_txt_signup_full_name" />
 
@@ -106,14 +94,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_password_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:fontFamily="@font/manropesemibold"
+                style="@style/edit_text_header"
                 android:text="@string/txtview_text_password"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edi_txt_signup_email" />
 
@@ -204,14 +186,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_confirm_password_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:fontFamily="@font/manropesemibold"
+                style="@style/edit_text_header"
                 android:text="@string/textview_text_confirm_password"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
@@ -243,14 +219,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_signup_phone_number_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:fontFamily="@font/manropesemibold"
+                style="@style/edit_text_header"
                 android:text="@string/textview_text_phone_number"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_confirm_password" />
 

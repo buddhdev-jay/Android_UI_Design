@@ -15,6 +15,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
+import com.example.androiduidesign.utils.THIRTYONE
+import com.example.androiduidesign.utils.TWENETYFOUR
 
 class SignInActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignInBinding
@@ -67,7 +69,7 @@ class SignInActivity : AppCompatActivity() {
                 ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
             }
         }
-        spannable.setSpan(clickableSpan2, 24, 31, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan2, TWENETYFOUR, THIRTYONE, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewNotHaveAccount.text = spannable
         binding.textviewNotHaveAccount.movementMethod = LinkMovementMethod.getInstance()
     }

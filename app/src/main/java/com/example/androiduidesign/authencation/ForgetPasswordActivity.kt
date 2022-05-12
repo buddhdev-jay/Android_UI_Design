@@ -17,6 +17,8 @@ import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityForgetPasswordBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
+import com.example.androiduidesign.utils.THIRTYEIGHT
+import com.example.androiduidesign.utils.THIRTYONE
 import kotlinx.android.synthetic.main.activity_forget_password.check_box_email
 
 class ForgetPasswordActivity : AppCompatActivity() {
@@ -67,7 +69,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
                 ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
             }
         }
-        spannable.setSpan(clickableSpan2, 31, 38, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan2, THIRTYONE, THIRTYEIGHT, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewHaveAccountForgetPassword.text = spannable
         binding.textviewHaveAccountForgetPassword.movementMethod = LinkMovementMethod.getInstance()
     }

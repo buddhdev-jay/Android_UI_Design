@@ -21,6 +21,8 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
+import com.example.androiduidesign.utils.THIRTYTHREE
+import com.example.androiduidesign.utils.TWENTY
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_one
 
 class VerficationScreenActivity : AppCompatActivity() {
@@ -89,7 +91,7 @@ class VerficationScreenActivity : AppCompatActivity() {
                 ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
             }
         }
-        spannable.setSpan(clickableSpan2, 20, 33, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan2, TWENTY, THIRTYTHREE, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewUpdateNumber.text = spannable
         binding.textviewUpdateNumber.movementMethod = LinkMovementMethod.getInstance()
     }

@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.WindowManager
 import com.example.androiduidesign.authencation.SignInActivity
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
+import com.example.androiduidesign.utils.TWOTHOUSAND
 
 class SplashScreenActivity : AppCompatActivity() {
     lateinit var handler : Handler
@@ -20,7 +21,7 @@ class SplashScreenActivity : AppCompatActivity() {
         handler.postDelayed({
             startActivity(Intent(this,OnBoardingActivity::class.java))
             finish()
-        }, 2000)
+        }, TWOTHOUSAND.toLong())
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
