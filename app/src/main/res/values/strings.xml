@@ -62,6 +62,7 @@
     <string name="text_view_text_update_number">Wrong phone number? Update number</string>
     <string name="toast_enter_otp">Enter OTP</string>
     <string name="toast_verfication_button_tapped">Verfication Button Taped</string>
+    <string name="text_resend_code">Resend Code in %s</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

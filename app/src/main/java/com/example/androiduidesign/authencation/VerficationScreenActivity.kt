@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
@@ -25,6 +26,7 @@ import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
 import com.example.androiduidesign.utils.THIRTYTHREE
 import com.example.androiduidesign.utils.TWENTY
+import com.example.androiduidesign.utils.getSpannable
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_four
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_one
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_three
@@ -92,24 +94,37 @@ class VerficationScreenActivity : AppCompatActivity() {
             lifecycleOwner = this@VerficationScreenActivity
         }
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        countDownTimer()
     }
 
-    private fun setSpannableText() {
-        val spannable = SpannableString(binding.textviewUpdateNumber.text)
-        val clickableSpan2: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(p0: View) {
-                val signInIntent = Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
-                startActivity(signInIntent)
-                finish()
+    private fun countDownTimer() {
+        object : CountDownTimer(60000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val m = (millisUntilFinished / 1000) / 60
+                val s = (millisUntilFinished / 1000) % 60
+                val format = String.format("%02d:%02d", m, s)
+                binding.textViewTextResendCode.text = getString(R.string.text_resend_code,format)
             }
 
-            override fun updateDrawState(ds: TextPaint) {
-                ds.setColor(ContextCompat.getColor(applicationContext, R.color.green_500))
-                ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
+            override fun onFinish() {
+                binding.textViewTextResendCode.setText("done!")
             }
+        }.start()
+    }
+
+
+
+    private fun setSpannableText() {
+        val spannable = getSpannable(
+            binding.textviewUpdateNumber.text.toString(), TWENTY,
+            THIRTYTHREE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)
+        ) {
+            val signInIntent =
+                Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
+            startActivity(signInIntent)
+            finish()
         }
-        spannable.setSpan(clickableSpan2, TWENTY, THIRTYTHREE, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewUpdateNumber.text = spannable
-        binding.textviewUpdateNumber.movementMethod = LinkMovementMethod.getInstance()
     }
 }

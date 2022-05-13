@@ -175,7 +175,6 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/face_id_icone"
                 android:fontFamily="@font/manropemedium"
-                android:paddingStart="@dimen/_50sdp"
                 android:text="@string/btn_text_face_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_Or" />
@@ -187,7 +186,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/google_icone"
-                android:paddingStart="@dimen/_50sdp"
                 android:text="@string/btn_text_google"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_face_id" />
@@ -199,7 +197,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/facebook_icone"
-                android:paddingStart="@dimen/_50sdp"
                 android:text="@string/btn_text_facebook"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
