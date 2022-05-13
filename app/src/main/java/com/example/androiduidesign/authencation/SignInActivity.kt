@@ -3,11 +3,13 @@ package com.example.androiduidesign.authencation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PatternMatcher
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -56,6 +58,7 @@ class SignInActivity : AppCompatActivity() {
             }
             textviewForgetPassword.setOnClickListener {
                 startActivity(Intent(this@SignInActivity,ForgetPasswordActivity::class.java))
+                finish()
             }
         }
     }
