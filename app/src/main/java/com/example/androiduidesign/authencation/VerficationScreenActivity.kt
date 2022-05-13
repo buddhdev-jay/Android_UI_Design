@@ -116,12 +116,8 @@ class VerficationScreenActivity : AppCompatActivity() {
 
 
     private fun setSpannableText() {
-        val spannable = getSpannable(
-            binding.textviewUpdateNumber.text.toString(), TWENTY,
-            THIRTYTHREE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)
-        ) {
-            val signInIntent =
-                Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
+        val spannable = getSpannable(binding.textviewUpdateNumber.text.toString(), TWENTY, THIRTYTHREE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)) {
+            val signInIntent = Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
             startActivity(signInIntent)
             finish()
         }
