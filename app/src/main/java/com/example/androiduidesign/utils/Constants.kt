@@ -10,3 +10,4 @@ const val NINETEEN =19
 const val  TWENTY = 20
 const val THIRTYTHREE = 33
 const val TWOTHOUSAND = 2000
+const val FIFTEEN = 15

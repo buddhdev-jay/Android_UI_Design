@@ -24,6 +24,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
+import com.example.androiduidesign.utils.FIFTEEN
 import com.example.androiduidesign.utils.THIRTYTHREE
 import com.example.androiduidesign.utils.TWENTY
 import com.example.androiduidesign.utils.getSpannable
@@ -108,7 +109,7 @@ class VerficationScreenActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.textViewTextResendCode.setText("done!")
+                binding.textViewTextResendCode.text = getString(R.string.text_send_code_again)
             }
         }.start()
     }
@@ -121,6 +122,10 @@ class VerficationScreenActivity : AppCompatActivity() {
             startActivity(signInIntent)
             finish()
         }
+        val spannableTimer = getSpannable(binding.textViewTextResendCode.text.toString(), FIFTEEN, TWENTY, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)) {}
         binding.textviewUpdateNumber.text = spannable
+        binding.textviewUpdateNumber.movementMethod = LinkMovementMethod.getInstance()
+        binding.textViewTextResendCode.text = spannableTimer
+        binding.textViewTextResendCode.movementMethod = LinkMovementMethod.getInstance()
     }
 }
