@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Android UI Design</string>
+    <string name="splash_screen_title_text_nutrice">Nutrice.</string>
+    <string name="splash_screen_tagline_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt et, volutpat duis amet, risus.</string>
+    <string name="splash_screen_btn_txt_continue">Continue</string>
+    <string name="onboarding_title_item_one">Completed Categories and Easy to Find Delicious Food</string>
+    <string name="onboarding_des_item_one">You can find a full range of categories and delicious and easy-to-find foods around you.</string>
+    <string name="onboarding_title_item_two">Many Coupons You Can Use with Big Discounts</string>
+    <string name="onboarding_des_item_two">There are many discount coupons that you can use with big discount.</string>
+    <string name="onboarding_title_item_three">Face Id Feature for Easy Access and Secure Transactions</string>
+    <string name="onboarding_des_item_three">There is a face ID feature that can be used with easy access and safe transactions.</string>
+    <string name="splash_screen_btn_txt_get_started">Get Started</string>
+    <string name="toast_test_get_started">Get Started Clicked</string>
 </resources>
