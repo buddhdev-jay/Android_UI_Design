@@ -129,11 +129,8 @@
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
-                android:background="@drawable/button_background"
-                android:fontFamily="@font/manropebold"
                 android:text="@string/brn_text_verify"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12ssp"
+                style="@style/button_style"
                 app:layout_constraintTop_toBottomOf="@id/text_view_text_resend_code" />
 
             <androidx.appcompat.widget.AppCompatTextView

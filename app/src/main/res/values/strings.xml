@@ -64,6 +64,12 @@
     <string name="toast_verfication_button_tapped">Verfication Button Taped</string>
     <string name="text_resend_code">Resend Code in %s</string>
     <string name="text_send_code_again">Send Code Again</string>
+    <string name="string_format_time">%02d:%02d</string>
+    <string name="text_view_text_set_new_password">Set New Password</string>
+    <string name="text_view_text_set_new_password_tag_line">Create your new password so you can share your memories again.</string>
+    <string name="btn_text_change_password">Change Password</string>
+    <string name="text_password_confirm_password_not_equal">Password and Confirm Password is not equal</string>
+    <string name="text_change_password_clicked">Change Password Button Clicked</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

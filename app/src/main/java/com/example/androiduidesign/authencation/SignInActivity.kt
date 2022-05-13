@@ -16,8 +16,11 @@ import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
+import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.THIRTYONE
 import com.example.androiduidesign.utils.TWENETYFOUR
+import com.example.androiduidesign.utils.TWENTYSIX
+import com.example.androiduidesign.utils.getSpannable
 
 class SignInActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignInBinding
@@ -58,19 +61,11 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun setSpannableText() {
-        val spannable = SpannableString(binding.textviewNotHaveAccount.text)
-        val clickableSpan2: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(p0: View) {
-                val signInIntent = Intent(this@SignInActivity,SignupActivity::class.java)
-                startActivity(signInIntent)
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                ds.setColor(ContextCompat.getColor(applicationContext, R.color.green_500))
-                ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
-            }
+        val spannable = getSpannable(binding.textviewNotHaveAccount.text.toString(), TWENETYFOUR, THIRTYONE, ContextCompat.getColor(this@SignInActivity, R.color.green_500)) {
+            val signInIntent = Intent(this@SignInActivity,SignupActivity::class.java)
+            startActivity(signInIntent)
+            finish()
         }
-        spannable.setSpan(clickableSpan2, TWENETYFOUR, THIRTYONE, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewNotHaveAccount.text = spannable
         binding.textviewNotHaveAccount.movementMethod = LinkMovementMethod.getInstance()
     }

@@ -24,6 +24,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
+import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 import com.example.androiduidesign.utils.FIFTEEN
 import com.example.androiduidesign.utils.THIRTYTHREE
 import com.example.androiduidesign.utils.TWENTY
@@ -78,10 +79,11 @@ class VerficationScreenActivity : AppCompatActivity() {
             finish()
         }
         binding.btnVerify.setOnClickListener {
-            if (edit_text_otp_one.toString().isNullOrEmpty() && edit_text_otp_two.toString().isNullOrEmpty() && edit_text_otp_three.toString().isNullOrEmpty() && edit_text_otp_four.toString().isNullOrEmpty()){
-                Toast.makeText(this,getString(R.string.toast_verfication_button_tapped),Toast.LENGTH_SHORT).show()
-            } else {
+            if (edit_text_otp_one.text.toString().isEmpty() || edit_text_otp_two.text.toString().isEmpty() || edit_text_otp_three.text.toString().isEmpty() || edit_text_otp_four.text.toString().isEmpty()){
                 Toast.makeText(this,getString(R.string.toast_enter_otp),Toast.LENGTH_SHORT).show()
+            } else {
+                startActivity(Intent(this, NewPasswordActivity::class.java))
+                finish()
             }
         }
     }
@@ -104,7 +106,7 @@ class VerficationScreenActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 val m = (millisUntilFinished / 1000) / 60
                 val s = (millisUntilFinished / 1000) % 60
-                val format = String.format("%02d:%02d", m, s)
+                val format = String.format(getString(R.string.string_format_time), m, s)
                 binding.textViewTextResendCode.text = getString(R.string.text_resend_code,format)
             }
 
@@ -113,8 +115,6 @@ class VerficationScreenActivity : AppCompatActivity() {
             }
         }.start()
     }
-
-
 
     private fun setSpannableText() {
         val spannable = getSpannable(binding.textviewUpdateNumber.text.toString(), TWENTY, THIRTYTHREE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)) {

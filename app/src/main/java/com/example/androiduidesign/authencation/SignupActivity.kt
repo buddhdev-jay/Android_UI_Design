@@ -24,8 +24,11 @@ import com.example.androiduidesign.databinding.ActivitySignupBinding
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.ONE
+import com.example.androiduidesign.utils.THIRTYTHREE
+import com.example.androiduidesign.utils.TWENTY
 import com.example.androiduidesign.utils.TWENTYSIX
 import com.example.androiduidesign.utils.ZERO
+import com.example.androiduidesign.utils.getSpannable
 import kotlinx.android.synthetic.main.activity_signup.btn_signup
 import kotlinx.android.synthetic.main.activity_signup.img_view_back_arrow
 
@@ -108,20 +111,13 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun setSpannableText() {
-        val spannable = SpannableString(binding.textviewNotHaveAccount.text)
-        val clickableSpan2: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(p0: View) {
-                val signInIntent = Intent(this@SignupActivity,SignInActivity::class.java)
-                startActivity(signInIntent)
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                ds.setColor(ContextCompat.getColor(applicationContext, R.color.green_500))
-                ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
-            }
+        val spannable = getSpannable(binding.textviewNotHaveAccount.text.toString(), NINETEEN, TWENTYSIX, ContextCompat.getColor(this@SignupActivity, R.color.green_500)) {
+            val signInIntent = Intent(this@SignupActivity, SignInActivity::class.java)
+            startActivity(signInIntent)
+            finish()
         }
-        spannable.setSpan(clickableSpan2, NINETEEN, TWENTYSIX, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textviewNotHaveAccount.text = spannable
         binding.textviewNotHaveAccount.movementMethod = LinkMovementMethod.getInstance()
     }
+
 }

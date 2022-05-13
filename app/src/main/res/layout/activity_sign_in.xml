@@ -82,6 +82,7 @@
                     android:focusable="true"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
+                    android:textColor="@color/black"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textSize="@dimen/_10ssp" />
@@ -125,6 +126,7 @@
                 android:fontFamily="@font/manropebold"
                 android:text="@string/btn_text_sign_in"
                 android:textAlignment="center"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@id/textview_forget_password" />
