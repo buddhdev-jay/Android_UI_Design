@@ -11,6 +11,7 @@ import android.text.TextPaint
 import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
@@ -48,24 +49,30 @@ class SignupActivity : AppCompatActivity() {
         btn_signup.setOnClickListener {
             binding.apply {
                 when {
-                    this.ediTxtSignupFullName.toString().isEmpty() -> {
+                    this.ediTxtSignupFullName.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_name_empty),Toast.LENGTH_SHORT).show()
                     }
-                    this.ediTxtSignupEmail.toString().isEmpty() -> {
+                    this.ediTxtSignupEmail.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_email_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignupEmail.text.toString()).matches() ->{
+                        Toast.makeText(this@SignupActivity,getString(R.string.toast_text_email_not_correct),Toast.LENGTH_SHORT).show()
                     }
                     this.ediTxtSignupPassword.toString().isEmpty() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
                     }
-                    this.ediTxtSignupConfirmPassword.toString().isEmpty() -> {
+                    this.ediTxtSignupConfirmPassword.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_confirm_password),Toast.LENGTH_SHORT).show()
                     }
-                    this.ediTxtSignupPhoneNumber.toString().isEmpty() -> {
+                    this.ediTxtSignupPhoneNumber.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_phone_empty) ,Toast.LENGTH_SHORT).show()
                     }
-                    this.ediTxtSignupPhoneNumber.length() < 10 -> {
+                    this.ediTxtSignupPhoneNumber.text.toString().length < 10  -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_valid_phone),Toast.LENGTH_SHORT).show()
                     }
+                   !this.checkboxTermsAndCondition.isChecked ->{
+                       Toast.makeText(this@SignupActivity,getString(R.string.toast_text_terms_and_condition_not_checked),Toast.LENGTH_SHORT).show()
+                   }
                     else -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.signup_btn_clicked),Toast.LENGTH_SHORT).show()
                     }

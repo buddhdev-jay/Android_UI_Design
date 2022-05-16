@@ -36,11 +36,14 @@ class SignInActivity : AppCompatActivity() {
         binding.apply {
             btnSignIn.setOnClickListener {
                 when {
-                    this.ediTxtSignInEmail.toString().isEmpty() -> {
+                    this.ediTxtSignInEmail.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_email_empty), Toast.LENGTH_SHORT).show()
                     }
-                    this.editxtSignInPassword.toString().isEmpty() -> {
+                    this.editxtSignInPassword.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignInEmail.text.toString()).matches() ->{
+                        Toast.makeText(this@SignInActivity,getString(R.string.toast_text_email_not_correct),Toast.LENGTH_SHORT).show()
                     }
                     else -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.sign_in_btn_clicked),Toast.LENGTH_SHORT).show()

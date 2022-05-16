@@ -70,6 +70,8 @@
     <string name="btn_text_change_password">Change Password</string>
     <string name="text_password_confirm_password_not_equal">Password and Confirm Password is not equal</string>
     <string name="text_change_password_clicked">Change Password Button Clicked</string>
+    <string name="toast_text_email_not_correct">Email is Not Correct</string>
+    <string name="toast_text_terms_and_condition_not_checked">Terms and Condition is not checked</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>
