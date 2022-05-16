@@ -241,6 +241,7 @@
                 app:layout_constraintTop_toBottomOf="@id/text_view_see_all" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_text_ideal_discount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -254,6 +255,17 @@
                 android:textSize="@dimen/_12ssp"
                 app:fontFamily="@font/manropebold"
                 app:layout_constraintTop_toBottomOf="@id/recyclerview_recommendation" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_discount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/text_view_text_ideal_discount" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
