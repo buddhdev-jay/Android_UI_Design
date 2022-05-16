@@ -63,6 +63,10 @@
     <string name="toast_enter_otp">Enter OTP</string>
     <string name="toast_verfication_button_tapped">Verfication Button Taped</string>
     <string name="text_resend_code">Resend Code in %s</string>
+    <string name="text_view_text_your_location">Your Location</string>
+    <string name="text_view_text_sample_location">Jl. Mahakarya No.21</string>
+    <string name="text_view_wallet_name">Nutpay</string>
+    <string name="sample_amout">$156,340.80</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

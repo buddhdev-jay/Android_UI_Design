@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".dashboard.HomeScreenActivity">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_location_label_home_screen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:fontFamily="@font/manroperegular"
+                android:text="@string/text_view_text_your_location"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/drop_down_arrow"
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="@font/manroperegular"
+                android:text="@string/text_view_text_sample_location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/img_view_notification"
+                app:layout_constraintStart_toStartOf="@id/text_view_location_label_home_screen"
+                app:layout_constraintTop_toBottomOf="@id/text_view_location_label_home_screen" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_view_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:src="@drawable/notification_icon"
+                app:layout_constraintEnd_toStartOf="@id/img_view_profile"
+                app:layout_constraintTop_toTopOf="@id/text_view_location_label_home_screen" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_view_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:src="@drawable/profile_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/img_view_notification" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:iconifiedByDefault="false"
+                app:iconifiedByDefault="false"
+                app:layout_constraintTop_toBottomOf="@id/text_view_location"
+                app:queryHint="What would you like to eat?"
+                app:searchHintIcon="@drawable/search_icon" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wallet_card_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/searchview"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_24sdp">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/back_nut_pay_image"/>
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:id="@+id/text_view_wallet_name"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/_12sdp"
+                   android:text="@string/text_view_wallet_name"
+                   android:fontFamily="@font/manropesemibold"
+                   android:drawableStart="@drawable/wallet_icon"
+                   android:layout_marginStart="@dimen/_10sdp"
+                   android:drawablePadding="@dimen/_5sdp"
+                   android:textColor="@color/white"/>
+              <androidx.appcompat.widget.AppCompatImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/menu_dots"
+                  android:layout_marginTop="@dimen/_16sdp"
+                  android:layout_marginEnd="@dimen/_10sdp"
+                  android:layout_gravity="end" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/sample_amout"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/manropebold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_view_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/wallet_card_view"
+                app:layout_constraintTop_toBottomOf="@id/searchview"
+                android:layout_marginTop="@dimen/_36sdp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:src="@drawable/plus_icon" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/img_view_plus"
+                app:layout_constraintStart_toEndOf="@id/wallet_card_view"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop=""
+                android:text="Top up"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

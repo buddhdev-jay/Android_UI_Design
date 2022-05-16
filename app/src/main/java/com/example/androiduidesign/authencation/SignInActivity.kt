@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
+import com.example.androiduidesign.dashboard.HomeScreenActivity
 import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
 import com.example.androiduidesign.utils.THIRTYONE
@@ -38,7 +39,7 @@ class SignInActivity : AppCompatActivity() {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
                     }
                     else -> {
-                        Toast.makeText(this@SignInActivity,getString(R.string.sign_in_btn_clicked),Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@SignInActivity,HomeScreenActivity::class.java))
                     }
                 }
             }
