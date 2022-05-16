@@ -67,6 +67,13 @@
     <string name="text_view_text_sample_location">Jl. Mahakarya No.21</string>
     <string name="text_view_wallet_name">Nutpay</string>
     <string name="sample_amout">$156,340.80</string>
+    <string name="text_view_text_top_up">Top up</string>
+    <string name="text_view_text_pay">Pay</string>
+    <string name="text_view_text_categories">Categories</string>
+    <string name="text_view_text_recommendation">Recommendations near you</string>
+    <string name="text_view_text_recommendation_tag_line">We choose delicious and close to you.</string>
+    <string name="text_view_text_see_all">See all</string>
+    <string name="text_view_text_ideal_discount">There is 1 idle discount</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

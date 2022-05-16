@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.androiduidesign.dashboard.CategoriesItemModel" />
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/drop_down_arrow"
                 android:drawablePadding="@dimen/_5sdp"
-                android:fontFamily="@font/manroperegular"
+                android:fontFamily="@font/manropebold"
                 android:text="@string/text_view_text_sample_location"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp"
@@ -61,77 +67,195 @@
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:iconifiedByDefault="false"
                 app:iconifiedByDefault="false"
                 app:layout_constraintTop_toBottomOf="@id/text_view_location"
                 app:queryHint="What would you like to eat?"
-                app:searchHintIcon="@drawable/search_icon" />
+                app:searchIcon="@drawable/search_icon" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/wallet_card_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/searchview"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginStart="@dimen/_24sdp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchview">
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:background="@drawable/back_nut_pay_image"/>
-               <androidx.appcompat.widget.AppCompatTextView
-                   android:id="@+id/text_view_wallet_name"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="@dimen/_12sdp"
-                   android:text="@string/text_view_wallet_name"
-                   android:fontFamily="@font/manropesemibold"
-                   android:drawableStart="@drawable/wallet_icon"
-                   android:layout_marginStart="@dimen/_10sdp"
-                   android:drawablePadding="@dimen/_5sdp"
-                   android:textColor="@color/white"/>
-              <androidx.appcompat.widget.AppCompatImageView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:background="@drawable/menu_dots"
-                  android:layout_marginTop="@dimen/_16sdp"
-                  android:layout_marginEnd="@dimen/_10sdp"
-                  android:layout_gravity="end" />
+                    android:background="@drawable/back_nut_pay_image" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_wallet_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawableStart="@drawable/wallet_icon"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:fontFamily="@font/manropesemibold"
+                    android:text="@string/text_view_wallet_name"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/menu_dots" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_35sdp"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text="@string/sample_amout"
-                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_35sdp"
                     android:ellipsize="end"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/manropebold" />
+                    android:fontFamily="@font/manropebold"
+                    android:maxLines="1"
+                    android:text="@string/sample_amout"
+                    android:textColor="@color/white" />
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_view_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/wallet_card_view"
-                app:layout_constraintTop_toBottomOf="@id/searchview"
-                android:layout_marginTop="@dimen/_36sdp"
                 android:layout_marginStart="@dimen/_25sdp"
-                android:src="@drawable/plus_icon" />
+                android:layout_marginTop="@dimen/_36sdp"
+                android:src="@drawable/plus_icon"
+                app:layout_constraintStart_toEndOf="@id/wallet_card_view"
+                app:layout_constraintTop_toBottomOf="@id/searchview" />
+
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/img_view_plus"
-                app:layout_constraintStart_toEndOf="@id/wallet_card_view"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop=""
-                android:text="Top up"
-                />
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/manropesemibold"
+                android:text="@string/text_view_text_top_up"
+                android:textColor="@color/green_500"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/img_view_plus"
+                app:layout_constraintStart_toStartOf="@id/img_view_plus"
+                app:layout_constraintTop_toBottomOf="@id/img_view_plus" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_view_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_36sdp"
+                android:layout_marginTop="@dimen/_36sdp"
+                android:src="@drawable/pay_icon"
+                app:layout_constraintStart_toEndOf="@id/img_view_plus"
+                app:layout_constraintTop_toBottomOf="@id/searchview" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/manropesemibold"
+                android:text="@string/text_view_text_pay"
+                android:textColor="@color/yellow_home_screen"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/img_view_pay"
+                app:layout_constraintStart_toStartOf="@id/img_view_pay"
+                app:layout_constraintTop_toBottomOf="@id/img_view_pay" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_categories_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:fontFamily="@font/manropebold"
+                android:text="@string/text_view_text_categories"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wallet_card_view" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/text_view_categories_label" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_recommendation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:fontFamily="@font/manropebold"
+                android:text="@string/text_view_text_recommendation"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toStartOf="@id/text_view_see_all"
+                app:layout_constraintStart_toStartOf="@id/recyclerview_categories"
+                app:layout_constraintTop_toBottomOf="@id/recyclerview_categories" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:fontFamily="@font/manroperegular"
+                android:text="@string/text_view_text_recommendation_tag_line"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toStartOf="@id/text_view_see_all"
+                app:layout_constraintStart_toStartOf="@id/text_view_recommendation"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recommendation" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_see_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_35sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:fontFamily="@font/manropesemibold"
+                android:text="@string/text_view_text_see_all"
+                android:textColor="@color/green_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerview_categories" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_recommendation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/text_view_see_all" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:drawableStart="@drawable/discount_image"
+                android:drawableEnd="@drawable/arrow_right"
+                android:drawablePadding="@dimen/_40sdp"
+                android:gravity="center_vertical"
+                android:text="@string/text_view_text_ideal_discount"
+                android:textSize="@dimen/_12ssp"
+                app:fontFamily="@font/manropebold"
+                app:layout_constraintTop_toBottomOf="@id/recyclerview_recommendation" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

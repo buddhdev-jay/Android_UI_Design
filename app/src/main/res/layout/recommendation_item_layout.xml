@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.androiduidesign.dashboard.RecommendationItemModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_3sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_view_recommendation_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{viewModel.image}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_text_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/manropemedium"
+                android:text="@{viewModel.distance}"
+                android:textColor="#4B4F58"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_view_recommendation_item" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dot_separtor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@drawable/dot_seprator"
+                app:layout_constraintStart_toEndOf="@id/text_view_text_distance"
+                app:layout_constraintTop_toBottomOf="@id/img_view_recommendation_item" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/manropemedium"
+                android:text="@{viewModel.time}"
+                android:textColor="#4B4F58"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/dot_separtor"
+                app:layout_constraintTop_toBottomOf="@id/img_view_recommendation_item" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_text_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:fontFamily="@font/manropebold"
+                android:text="@{viewModel.name}"
+                android:textColor="#1E232E"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_text_distance" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:src="@drawable/star_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_text_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_text_star_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/manropemedium"
+                android:text="@{viewModel.stars}"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/_3sdp"
+                app:layout_constraintStart_toEndOf="@id/img_star"
+                app:layout_constraintTop_toBottomOf="@id/text_view_text_name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dot_separtor_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@drawable/dot_seprator"
+                app:layout_constraintStart_toEndOf="@id/text_view_text_star_rating"
+                app:layout_constraintTop_toBottomOf="@id/text_view_text_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="@{viewModel.rating}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/dot_separtor_two"
+                app:layout_constraintTop_toBottomOf="@id/text_view_text_name" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
