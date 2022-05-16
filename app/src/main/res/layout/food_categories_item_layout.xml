@@ -28,29 +28,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/discountTag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_minus5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:src="@drawable/discount_tag_back"
-                app:layout_constraintStart_toStartOf="@id/img_view_recommendation_item"
-                app:layout_constraintTop_toTopOf="@id/img_view_recommendation_item" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:text="@{viewModel.discount}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_10ssp"
-                app:fontFamily="@font/manropesemibold"
-                app:layout_constraintBottom_toBottomOf="@id/discountTag"
-                app:layout_constraintEnd_toEndOf="@id/discountTag"
-                app:layout_constraintStart_toStartOf="@id/discountTag"
-                app:layout_constraintTop_toTopOf="@id/discountTag" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_view_text_distance"
                 android:layout_width="wrap_content"

@@ -32,7 +32,6 @@ class OnBoardingActivity : AppCompatActivity() {
             if (viewpager_onboarding.currentItem + 1 < onBoardingadapter?.itemCount ?: 0) {
                 viewpager_onboarding.setCurrentItem(viewpager_onboarding.currentItem + 1)
             } else {
-               // btn_onBoading.text = getString(R.string.splash_screen_btn_txt_get_started)
                 startActivity(Intent(this,SignInActivity::class.java))
                 finish()
             }

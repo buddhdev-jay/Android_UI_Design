@@ -74,6 +74,21 @@
     <string name="text_view_text_recommendation_tag_line">We choose delicious and close to you.</string>
     <string name="text_view_text_see_all">See all</string>
     <string name="text_view_text_ideal_discount">There is 1 idle discount</string>
+    <string name="categories_name">Takasimuraaa</string>
+    <string name="text_view_text_categories_tag_line">We choose cheap food for you</string>
+    <string name="categories_title_one">Lalapan Akang Slamet</string>
+    <string name="distance_1_02">1.02 km</string>
+    <string name="text_8_mins">8 min</string>
+    <string name="text_4_9_rating">4.9</string>
+    <string name="categories_item_one_rating">6rb+ ratings</string>
+    <string name="text_discount_fifteen">15%</string>
+    <string name="categories_item_two">Nasi Goreng  Dower, Rumbai</string>
+    <string name="text_14_mins">14 mins</string>
+    <string name="categories_item_three">Rocket Chicken Kayu Manis</string>
+    <string name="toasr_see_all_clicked">See All Recommendation Clicked</string>
+    <string name="toast_see_all_categories_clicked">see All Categoried Clicked</string>
+    <string name="toast_pay_button_tapped">Pay Button tapped</string>
+    <string name="toast_plus_button_tapped">Plus Button Tapped</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>
