@@ -8,6 +8,7 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -37,6 +38,9 @@ class SignInActivity : AppCompatActivity() {
                     }
                     this.editxtSignInPassword.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
+                    }
+                    Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignInEmail.text.toString()).matches() -> {
+                        Toast.makeText(this@SignInActivity,getString(R.string.toast_email_not_valid),Toast.LENGTH_SHORT).show()
                     }
                     else -> {
                         startActivity(Intent(this@SignInActivity,HomeScreenActivity::class.java))

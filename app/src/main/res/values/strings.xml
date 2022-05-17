@@ -89,6 +89,7 @@
     <string name="toast_see_all_categories_clicked">see All Categoried Clicked</string>
     <string name="toast_pay_button_tapped">Pay Button tapped</string>
     <string name="toast_plus_button_tapped">Plus Button Tapped</string>
+    <string name="toast_email_not_valid">Email is Not Valid</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>
