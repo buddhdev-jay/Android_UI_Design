@@ -16,7 +16,7 @@ class DetaileRecommendationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detaile_recommendation)
+        initialSetup()
     }
 
     private fun initialSetup() {
@@ -27,6 +27,15 @@ class DetaileRecommendationActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        TODO("Not yet implemented")
+        setData()
+        detailRecommendationsadapter = DetaileRecommendationAdapter(detailItemList)
+        binding.recyclerviewDeatilRecommendation.adapter = detailRecommendationsadapter
+    }
+
+    private fun setData() {
+       detailItemList.apply {
+            add(DetailRecommendationModel(0,R.drawable.recommendation_res_header_one,"Bamboo Restaurant","Rice, chicken & duck, Snacks","4.5","0.1 km","13 min",null,null,null,null,null))
+           add(DetailRecommendationModel(1,null,null,null,null,null,null,R.drawable.recommendation_item_section_one,"Super Family Package","2 Chicken Wings, 2 Rice, ...","\$12.00","0"))
+        }
     }
 }

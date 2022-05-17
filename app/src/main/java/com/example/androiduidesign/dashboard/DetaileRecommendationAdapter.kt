@@ -13,12 +13,12 @@ class DetaileRecommendationAdapter(private val DetailRecommendationItems: ArrayL
     lateinit var headerbinding: RecommendationRestaurantsHeaderItemLayoutBinding
     lateinit var sectionbinding: RecommendationRestaurantsSectionItemLayoutBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == 0) {
-            headerbinding = RecommendationRestaurantsHeaderItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return DetaileRecommendationAdapter.HeaderViewHolder(headerbinding)
+        headerbinding = RecommendationRestaurantsHeaderItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        sectionbinding =RecommendationRestaurantsSectionItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return if (viewType == 0) {
+            DetaileRecommendationAdapter.HeaderViewHolder(headerbinding)
         } else {
-            sectionbinding =RecommendationRestaurantsSectionItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return DetaileRecommendationAdapter.SectionViewHolder(sectionbinding)
+            DetaileRecommendationAdapter.SectionViewHolder(sectionbinding)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.androiduidesign.dashboard
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -72,7 +73,7 @@ class HomeScreenActivity : AppCompatActivity(),View.OnClickListener{
     override fun onClick(p0: View?) {
         when (p0?.id){
             R.id.text_view_see_all -> {
-                Toast.makeText(this@HomeScreenActivity,getString(R.string.toasr_see_all_clicked),Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@HomeScreenActivity,DetaileRecommendationActivity::class.java))
             }
             R.id.text_view_see_all_categories -> {
                 Toast.makeText(this@HomeScreenActivity,getString(R.string.toast_see_all_categories_clicked),Toast.LENGTH_SHORT).show()
