@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.androiduidesign.dashboard.DetailRecommendationModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_view_recommendation_res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/recommendation_res_header_one"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_recommendation_header_res_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:maxLines="2"
+            android:text="Bamboo Restaurant "
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:fontFamily="@font/manropebold"
+            app:layout_constraintEnd_toStartOf="@id/img_view_star_recommendation_res"
+            app:layout_constraintStart_toEndOf="@id/img_view_recommendation_res"
+            app:layout_constraintTop_toTopOf="@id/img_view_recommendation_res" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_recommendation_header_res_items"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manropemedium"
+            android:text="Rice, chicken and duck, Snacks"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="@id/text_view_recommendation_header_res_title"
+            app:layout_constraintEnd_toStartOf="@id/text_view_recommendation_header_res_time"
+            app:layout_constraintTop_toBottomOf="@id/text_view_recommendation_header_res_title" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_view_star_recommendation_res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:src="@drawable/star_icon"
+            app:layout_constraintEnd_toEndOf="@id/text_view_text_recommendation_header_rating"
+            app:layout_constraintStart_toEndOf="@id/text_view_recommendation_header_res_title"
+            app:layout_constraintTop_toTopOf="@id/img_view_recommendation_res" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_text_recommendation_header_rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:fontFamily="@font/manropebold"
+            android:text="4.5"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toEndOf="@id/img_view_star_recommendation_res"
+            app:layout_constraintTop_toTopOf="@id/img_view_recommendation_res" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:fontFamily="@font/manropebold"
+            android:text="0.1 km"
+            android:textAlignment="center"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_view_text_recommendation_header_rating"
+            app:layout_constraintTop_toTopOf="@id/img_view_recommendation_res" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_recommendation_header_res_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_50sdp"
+            app:layout_constraintTop_toBottomOf="@id/text_view_text_recommendation_header_rating"
+            android:textSize="@dimen/_10ssp"
+            android:text="13 min"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

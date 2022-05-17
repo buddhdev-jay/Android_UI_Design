@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUIDesign">
         <activity
+            android:name=".dashboard.DetaileRecommendationActivity"
+            android:exported="false" />
+        <activity
             android:name=".dashboard.HomeScreenActivity"
             android:exported="false" />
         <activity

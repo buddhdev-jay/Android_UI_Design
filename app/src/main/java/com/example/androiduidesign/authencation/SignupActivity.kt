@@ -64,7 +64,7 @@ class SignupActivity : AppCompatActivity() {
                     this.ediTxtSignupPhoneNumber.text.toString().length < 10 -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_valid_phone),Toast.LENGTH_SHORT).show()
                     }
-                    Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignupEmail.text.toString()).matches() -> {
+                    !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignupEmail.text.toString()).matches() -> {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_email_not_valid),Toast.LENGTH_SHORT).show()
                     }
                     else -> {
