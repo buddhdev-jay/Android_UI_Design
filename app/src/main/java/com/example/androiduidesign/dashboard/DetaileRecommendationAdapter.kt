@@ -2,42 +2,46 @@ package com.example.androiduidesign.dashboard
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiduidesign.databinding.CategoriesItemLayoutBinding
 import com.example.androiduidesign.databinding.RecommendationRestaurantsHeaderItemLayoutBinding
 import com.example.androiduidesign.databinding.RecommendationRestaurantsSectionItemLayoutBinding
 
-class DetaileRecommendationAdapter(private val DetailRecommendationItems: ArrayList<DetailRecommendationModel>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DetaileRecommendationAdapter(private val DetailRecommendationItems: List<DetailRecommendationModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    class ItemHolder(val binding: RecommendationRestaurantsHeaderItemLayoutBinding): RecyclerView.ViewHolder(binding.root)
+    class SectionHolder(val binding: RecommendationRestaurantsSectionItemLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
-    lateinit var headerbinding: RecommendationRestaurantsHeaderItemLayoutBinding
-    lateinit var sectionbinding: RecommendationRestaurantsSectionItemLayoutBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        headerbinding = RecommendationRestaurantsHeaderItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        sectionbinding =RecommendationRestaurantsSectionItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return if (viewType == 0) {
-            DetaileRecommendationAdapter.HeaderViewHolder(headerbinding)
-        } else {
-            DetaileRecommendationAdapter.SectionViewHolder(sectionbinding)
+        return when(viewType) {
+            0 -> {
+                val headerBinding = RecommendationRestaurantsHeaderItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemHolder(headerBinding)
+            }
+            else -> {
+                val sectionBinding = RecommendationRestaurantsSectionItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                SectionHolder(sectionBinding)
+            }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        headerbinding.viewModel = DetailRecommendationItems[position]
-        sectionbinding.viewModel = DetailRecommendationItems[position]
+        when(DetailRecommendationItems[position].viewType) {
+            0 -> {
+                (holder as ItemHolder).binding.viewModel = DetailRecommendationItems[position]
+            }
+            else -> {
+                (holder as SectionHolder).binding.viewModel = DetailRecommendationItems[position]
+            }
+        }
     }
 
     override fun getItemCount(): Int {
        return DetailRecommendationItems.size
     }
-    class SectionViewHolder(binding: RecommendationRestaurantsSectionItemLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
 
-    }
-
-    class HeaderViewHolder(binding: RecommendationRestaurantsHeaderItemLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
+    override fun getItemViewType(position: Int): Int {
+        return DetailRecommendationItems[position].viewType
     }
 }
 

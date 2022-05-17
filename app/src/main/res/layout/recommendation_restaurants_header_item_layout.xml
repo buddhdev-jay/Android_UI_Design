@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.androiduidesign.dashboard.DetailRecommendationModel" />
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_24sdp"
             android:layout_marginTop="@dimen/_12sdp"
-            android:src="@drawable/recommendation_res_header_one"
+            android:src="@{viewModel.headerImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:maxLines="2"
-            android:text="Bamboo Restaurant "
+            android:text="@{viewModel.headerTile}"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             app:fontFamily="@font/manropebold"
@@ -41,10 +42,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/manropemedium"
-            android:text="Rice, chicken and duck, Snacks"
+            android:text="@{viewModel.headerDescription}"
             android:textSize="@dimen/_10ssp"
-            app:layout_constraintStart_toStartOf="@id/text_view_recommendation_header_res_title"
             app:layout_constraintEnd_toStartOf="@id/text_view_recommendation_header_res_time"
+            app:layout_constraintStart_toStartOf="@id/text_view_recommendation_header_res_title"
             app:layout_constraintTop_toBottomOf="@id/text_view_recommendation_header_res_title" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_3sdp"
             android:fontFamily="@font/manropebold"
-            android:text="4.5"
+            android:text="@{viewModel.headerRating}"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintStart_toEndOf="@id/img_view_star_recommendation_res"
             app:layout_constraintTop_toTopOf="@id/img_view_recommendation_res" />
@@ -74,21 +75,22 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_24sdp"
             android:fontFamily="@font/manropebold"
-            android:text="0.1 km"
+            android:text="@{viewModel.headerDistance"
             android:textAlignment="center"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_view_text_recommendation_header_rating"
             app:layout_constraintTop_toTopOf="@id/img_view_recommendation_res" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_view_recommendation_header_res_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_50sdp"
-            app:layout_constraintTop_toBottomOf="@id/text_view_text_recommendation_header_rating"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:text="@{viewModel.headerTime}"
             android:textSize="@dimen/_10ssp"
-            android:text="13 min"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_text_recommendation_header_rating" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

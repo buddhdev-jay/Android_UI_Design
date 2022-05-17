@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.androiduidesign.dashboard.DetailRecommendationModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_view_recommendation_res_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:src="@drawable/recommendation_item_section_one"
+            android:src="@{viewModel.sectionImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:fontFamily="@font/manropebold"
-            android:text="Super Family Package"
+            android:text="@{viewModel.sectionheader}"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toEndOf="@id/img_view_recommendation_res_section"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/manropemedium"
-            android:text="2 Chicken Wings, 2 Rice, ..."
+            android:text="@{viewModel.sectionDes}"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintStart_toStartOf="@id/text_view_recommendation_section_res_title"
             app:layout_constraintTop_toBottomOf="@id/text_view_recommendation_section_res_title" />
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/manropebold"
-            android:text="$12.00"
+            android:text="@{viewModel.sectionPrice}"
             android:textColor="#FFAA2C"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintStart_toStartOf="@id/text_view_recommendation_section_res_title"
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_6sdp"
-            android:text="0"
+            android:text="@{viewModel.quantity}"
             app:layout_constraintBottom_toBottomOf="@id/btn_cart_plus"
             app:layout_constraintEnd_toStartOf="@id/btn_cart_plus"
             app:layout_constraintTop_toTopOf="@id/btn_cart_plus" />

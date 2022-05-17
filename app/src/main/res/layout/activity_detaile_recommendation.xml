@@ -36,7 +36,6 @@
         android:layout_marginStart="@dimen/_24sdp"
         android:layout_marginEnd="@dimen/_24sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/textview_signup_header" />
 </androidx.constraintlayout.widget.ConstraintLayout>

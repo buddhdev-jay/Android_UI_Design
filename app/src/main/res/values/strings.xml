@@ -90,6 +90,14 @@
     <string name="toast_pay_button_tapped">Pay Button tapped</string>
     <string name="toast_plus_button_tapped">Plus Button Tapped</string>
     <string name="toast_email_not_valid">Email is Not Valid</string>
+    <string name="resturant_name_sample">Bamboo Restaurant</string>
+    <string name="resurant_des_one"><![CDATA[Rice, chicken & duck, Snacks]]></string>
+    <string name="four_five_rating">4.5</string>
+    <string name="zero_one_kelometer">0.1 km</string>
+    <string name="thirteen_minutes">13 min</string>
+    <string name="text_family_package">Super Family Package</string>
+    <string name="zero_quantity">0</string>
+    <string name="food_item_description">2 Chicken Wings, 2 Rice, ...</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>
