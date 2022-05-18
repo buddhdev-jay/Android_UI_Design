@@ -27,8 +27,14 @@ import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.ONE
 import com.example.androiduidesign.utils.TWENTYSIX
 import com.example.androiduidesign.utils.ZERO
+import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
+import java.net.URL
 import kotlinx.android.synthetic.main.activity_signup.btn_signup
+import kotlinx.android.synthetic.main.activity_signup.edi_txt_signup_email
+import kotlinx.android.synthetic.main.activity_signup.edi_txt_signup_full_name
+import kotlinx.android.synthetic.main.activity_signup.edi_txt_signup_password
 import kotlinx.android.synthetic.main.activity_signup.img_view_back_arrow
+import org.json.JSONObject
 
 
 class SignupActivity : AppCompatActivity() {
@@ -68,11 +74,24 @@ class SignupActivity : AppCompatActivity() {
                         Toast.makeText(this@SignupActivity,getString(R.string.toast_email_not_valid),Toast.LENGTH_SHORT).show()
                     }
                     else -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.signup_btn_clicked),Toast.LENGTH_SHORT).show()
+                        val cred = JSONObject()
+                        cred.put("name",edi_txt_signup_full_name.text.toString())
+                        cred.put("email", edi_txt_signup_email.text.toString())
+                        cred.put("passsword", edi_txt_signup_password.text.toString())
+                        signupViewModel.apiCall(cred,"https://6283714992a6a5e46223ee72.mockapi.io/api/v1/createUser" as URL,"POST",object :HTTPCallback{
+                            override fun successCallback(output: String) {
+                                Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
+                            }
+                            override fun failerCallback(responseCode: Int, output: String) {
+                                Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
+                            }
+
+                        })
                     }
                 }
             }
         }
+
 
         signupViewModel.password.observe(this) { password ->
             password.apply {

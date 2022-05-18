@@ -97,6 +97,8 @@
     <string name="thirteen_minutes">13 min</string>
     <string name="text_family_package">Super Family Package</string>
     <string name="zero_quantity">0</string>
+    <string name="json_content_type">Content-Type</string>
+    <string name="content_type_json">application/json</string>
     <string name="food_item_description">2 Chicken Wings, 2 Rice, ...</string>
     <string-array name="countryCodes">
         <item>+93</item>

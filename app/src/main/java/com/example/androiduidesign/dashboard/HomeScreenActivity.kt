@@ -7,8 +7,11 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityHomeScreenBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class HomeScreenActivity : AppCompatActivity(),View.OnClickListener{
     lateinit var binding: ActivityHomeScreenBinding
@@ -23,6 +26,7 @@ class HomeScreenActivity : AppCompatActivity(),View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialSetup()
+
     }
 
     private fun initialSetup() {

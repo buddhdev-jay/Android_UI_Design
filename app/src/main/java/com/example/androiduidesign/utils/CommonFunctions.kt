@@ -6,6 +6,17 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
+import androidx.lifecycle.LifecycleCoroutineScope
+import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+import java.net.HttpURLConnection
+import java.net.URL
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
+
 
 fun getSpannable(text: String, startIndex: Int, endIndex: Int, color: Int, spanClickCallback: () -> Unit): Spannable {
     val spannable = SpannableString(text)
@@ -23,3 +34,4 @@ fun getSpannable(text: String, startIndex: Int, endIndex: Int, color: Int, spanC
     spannable.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     return spannable
 }
+
