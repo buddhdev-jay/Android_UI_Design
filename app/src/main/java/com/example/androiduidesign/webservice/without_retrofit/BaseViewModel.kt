@@ -16,22 +16,21 @@ import org.json.JSONObject
 
 open class BaseViewModel:ViewModel(){
 
-    fun<T: Any> apiCall(
-        jsonObject: JSONObject, url: URL, requestmethod: String, data: Class<T>? = null,
+    fun<T> apiCall(
+        jsonObject: JSONObject, url: URL, requestmethod: String, data: Class<T>?,
         httpCallback: HTTPCallback){
         viewModelScope.launch(Dispatchers.IO) {
-            with(url.openConnection() as HttpURLConnection) {
+            val httpURLConnection = url.openConnection() as HttpURLConnection
+            with(httpURLConnection) {
                 requestMethod = requestmethod
                 setRequestProperty("Content-Type", "application/json")
                 val writer = OutputStreamWriter(outputStream)
                 writer.write(jsonObject.toString())
                 writer.flush()
-                val httpURLConnection = url.openConnection() as HttpURLConnection
-                val response = httpURLConnection.inputStream.bufferedReader().use { it.readText() }
                 if (responseCode == HttpURLConnection.HTTP_OK) {
+                    val response = httpURLConnection.inputStream.bufferedReader().use { it.readText() }
                     val gson = GsonBuilder().setPrettyPrinting().create()
-                    val prettyJson = gson.toJson(JsonParser.parseString(response))
-                    val dataObject = gson.fromJson(prettyJson,data)
+                    val dataObject = gson.fromJson(response,data)
                     httpCallback.successCallback(responseMessage,dataObject)
                 } else {
                     httpCallback.failureCallback(responseCode,responseMessage)

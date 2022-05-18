@@ -100,6 +100,9 @@
     <string name="json_content_type">Content-Type</string>
     <string name="content_type_json">application/json</string>
     <string name="food_item_description">2 Chicken Wings, 2 Rice, ...</string>
+    <string name="name_key">name</string>
+    <string name="email_key">email</string>
+    <string name="password_key">passsword</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

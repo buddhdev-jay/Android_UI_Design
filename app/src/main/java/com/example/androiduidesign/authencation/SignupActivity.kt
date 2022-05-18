@@ -18,10 +18,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
+import com.example.androiduidesign.dashboard.DiscountItemModel
 import com.example.androiduidesign.databinding.ActivitySignupBinding
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
+import com.example.androiduidesign.utils.CREATE_USER_BASE_URL
 import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.ONE
+import com.example.androiduidesign.utils.POST
 import com.example.androiduidesign.utils.TWENTYSIX
 import com.example.androiduidesign.utils.ZERO
 import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
@@ -72,23 +75,21 @@ class SignupActivity : AppCompatActivity() {
                     }
                     else -> {
                         val cred = JSONObject()
-                        cred.put("name",edi_txt_signup_full_name.text.toString())
-                        cred.put("email", edi_txt_signup_email.text.toString())
-                        cred.put("passsword", edi_txt_signup_password.text.toString())
-                        val url = URL("https://6283714992a6a5e46223ee72.mockapi.io/api/v1/createUser")
-                        signupViewModel.apiCall(cred,url,"POST",null,object :HTTPCallback{
-                            override fun <T : Any> successCallback(output: String, dataClass: T?) {
+                        cred.put(getString(R.string.name_key),edi_txt_signup_full_name.text.toString())
+                        cred.put(getString(R.string.email_key), edi_txt_signup_email.text.toString())
+                        cred.put(getString(R.string.password_key), edi_txt_signup_password.text.toString())
+                        val url = URL(CREATE_USER_BASE_URL)
+                        signupViewModel.apiCall(cred,url, POST,Any::class.java,object :HTTPCallback{
+                            override fun <T> successCallback(output: String, dataClass: T?) {
                                 runOnUiThread {
                                     Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
                                 }
                             }
-
                             override fun failureCallback(responseCode: Int, output: String) {
                                 runOnUiThread {
                                     Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
                                 }
                             }
-
                         })
                     }
                 }
