@@ -1,16 +1,13 @@
 package com.example.androiduidesign.authencation
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
-import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
@@ -78,12 +75,18 @@ class SignupActivity : AppCompatActivity() {
                         cred.put("name",edi_txt_signup_full_name.text.toString())
                         cred.put("email", edi_txt_signup_email.text.toString())
                         cred.put("passsword", edi_txt_signup_password.text.toString())
-                        signupViewModel.apiCall(cred,"https://6283714992a6a5e46223ee72.mockapi.io/api/v1/createUser" as URL,"POST",object :HTTPCallback{
-                            override fun successCallback(output: String) {
-                                Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
+                        val url = URL("https://6283714992a6a5e46223ee72.mockapi.io/api/v1/createUser")
+                        signupViewModel.apiCall(cred,url,"POST",null,object :HTTPCallback{
+                            override fun <T : Any> successCallback(output: String, dataClass: T?) {
+                                runOnUiThread {
+                                    Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
+                                }
                             }
-                            override fun failerCallback(responseCode: Int, output: String) {
-                                Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
+
+                            override fun failureCallback(responseCode: Int, output: String) {
+                                runOnUiThread {
+                                    Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
+                                }
                             }
 
                         })

@@ -1,6 +1,6 @@
 package com.example.androiduidesign.webservice.without_retrofit
 
 interface HTTPCallback {
-    fun successCallback(output:String)
-    fun failerCallback(responseCode:Int,output:String)
+    fun<T:Any> successCallback(output:String , dataClass:T? = null)
+    fun failureCallback(responseCode:Int,output:String)
 }
