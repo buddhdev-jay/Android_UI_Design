@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
-import com.example.androiduidesign.authencation.SignInActivity
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 import com.example.androiduidesign.utils.TWOTHOUSAND
 

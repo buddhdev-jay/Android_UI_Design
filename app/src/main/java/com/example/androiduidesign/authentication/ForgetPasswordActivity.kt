@@ -1,4 +1,4 @@
-package com.example.androiduidesign.authencation
+package com.example.androiduidesign.authentication
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat

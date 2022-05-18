@@ -1,15 +1,13 @@
 package com.example.androiduidesign.onboardingscreen
 
 import android.content.Intent
-import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.example.androiduidesign.R
-import com.example.androiduidesign.authencation.SignInActivity
-import com.example.androiduidesign.authencation.SignupActivity
+import com.example.androiduidesign.authentication.SignInActivity
 import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_on_boarding.btn_onBoading

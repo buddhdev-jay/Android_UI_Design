@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.androiduidesign.authencation.SignupViewModel" />
+            type="com.example.androiduidesign.authentication.SignupViewModel" />
     </data>
 
     <ScrollView
@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".authencation.SignupActivity">
+            tools:context=".authentication.SignupActivity">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_view_back_arrow"

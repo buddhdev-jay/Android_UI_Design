@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.androiduidesign.authencation.VerificationViewModel" />
+            type="com.example.androiduidesign.authentication.VerificationViewModel" />
     </data>
 
 
@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".authencation.VerficationScreenActivity">
+            tools:context=".authentication.VerficationScreenActivity">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_view_back_arrow_otp"

@@ -16,16 +16,16 @@
             android:name=".dashboard.HomeScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".authencation.VerficationScreenActivity"
+            android:name=".authentication.VerficationScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".authencation.ForgetPasswordActivity"
+            android:name=".authentication.ForgetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".authencation.SignupActivity"
+            android:name=".authentication.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".authencation.SignInActivity"
+            android:name=".authentication.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".onboardingscreen.OnBoardingActivity"

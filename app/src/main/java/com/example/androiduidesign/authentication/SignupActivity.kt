@@ -1,14 +1,10 @@
-package com.example.androiduidesign.authencation
+package com.example.androiduidesign.authentication
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
-import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Patterns
@@ -22,7 +18,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivitySignupBinding
-import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
 import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.ONE
 import com.example.androiduidesign.utils.TWENTYSIX

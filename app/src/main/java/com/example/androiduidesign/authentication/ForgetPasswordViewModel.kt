@@ -1,4 +1,4 @@
-package com.example.androiduidesign.authencation
+package com.example.androiduidesign.authentication
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

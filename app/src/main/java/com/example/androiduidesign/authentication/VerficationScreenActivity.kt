@@ -1,26 +1,15 @@
-package com.example.androiduidesign.authencation
+package com.example.androiduidesign.authentication
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.Editable
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.TextWatcher
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.view.KeyEvent
-import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding

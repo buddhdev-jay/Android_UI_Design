@@ -1,4 +1,4 @@
-package com.example.androiduidesign.authencation
+package com.example.androiduidesign.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.dashboard.HomeScreenActivity
-import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
 import com.example.androiduidesign.utils.THIRTYONE
 import com.example.androiduidesign.utils.TWENETYFOUR
@@ -27,16 +26,17 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialSetup()
-        binding.textviewNotHaveAccount.setOnClickListener {
-            startActivity(Intent(this,SignupActivity::class.java))
-        }
         binding.apply {
+            textviewNotHaveAccount.setOnClickListener {
+                startActivity(Intent(this@SignInActivity,SignupActivity::class.java))
+            }
             btnSignIn.setOnClickListener {
+                validation()
                 when {
-                    this.ediTxtSignInEmail.toString().isEmpty() -> {
+                    this.ediTxtSignInEmail.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_email_empty), Toast.LENGTH_SHORT).show()
                     }
-                    this.editxtSignInPassword.toString().isEmpty() -> {
+                    this.editxtSignInPassword.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
                     }
                     !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignInEmail.text.toString()).matches() -> {
@@ -60,6 +60,9 @@ class SignInActivity : AppCompatActivity() {
                 startActivity(Intent(this@SignInActivity,ForgetPasswordActivity::class.java))
             }
         }
+    }
+
+    private fun validation() {
     }
 
     private fun setSpannableText() {
