@@ -1,5 +1,7 @@
 package com.example.androiduidesign.webservice.without_retrofit
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,10 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
-open class BaseViewModel:ViewModel(){
+open class BaseViewModel(application: Application):AndroidViewModel(application){
 
-    fun<T> apiCall(
-        jsonObject: JSONObject, url: URL, requestmethod: String, data: Class<T>?,
+    fun<T> apiCall(jsonObject: JSONObject, url: URL, requestmethod: String, data: Class<T>,
         httpCallback: HTTPCallback){
         viewModelScope.launch(Dispatchers.IO) {
             val httpURLConnection = url.openConnection() as HttpURLConnection

@@ -37,65 +37,25 @@ import kotlinx.android.synthetic.main.activity_signup.img_view_back_arrow
 import org.json.JSONObject
 
 
-class SignupActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity(){
     lateinit var binding: ActivitySignupBinding
     val signupViewModel : SignupViewModel by viewModels()
     lateinit var adapter: ArrayAdapter<CharSequence>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        intialSetup()
+        initialSetup()
         img_view_back_arrow.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }
         btn_signup.setOnClickListener {
-            binding.apply {
-                when {
-                    this.ediTxtSignupFullName.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_name_empty),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupEmail.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_email_empty),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupPassword.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupConfirmPassword.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_confirm_password),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupPhoneNumber.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_phone_empty) ,Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupPhoneNumber.text.toString().length < 10 -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_valid_phone),Toast.LENGTH_SHORT).show()
-                    }
-                    !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignupEmail.text.toString()).matches() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_email_not_valid),Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        val cred = JSONObject()
-                        cred.put(getString(R.string.name_key),edi_txt_signup_full_name.text.toString())
-                        cred.put(getString(R.string.email_key), edi_txt_signup_email.text.toString())
-                        cred.put(getString(R.string.password_key), edi_txt_signup_password.text.toString())
-                        val url = URL(CREATE_USER_BASE_URL)
-                        signupViewModel.apiCall(cred,url, POST,Any::class.java,object :HTTPCallback{
-                            override fun <T> successCallback(output: String, dataClass: T?) {
-                                runOnUiThread {
-                                    Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            override fun failureCallback(responseCode: Int, output: String) {
-                                runOnUiThread {
-                                    Toast.makeText(this@SignupActivity,output,Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        })
-                    }
-                }
-            }
+           signupViewModel.performValidation()
         }
 
+        signupViewModel.getLogInResult().observe(this) { result ->
+            Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+        }
 
         signupViewModel.password.observe(this) { password ->
             password.apply {
@@ -120,7 +80,7 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    private fun intialSetup() {
+    private fun initialSetup() {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         adapter = ArrayAdapter.createFromResource(this, R.array.countryCodes, android.R.layout.simple_spinner_dropdown_item)
