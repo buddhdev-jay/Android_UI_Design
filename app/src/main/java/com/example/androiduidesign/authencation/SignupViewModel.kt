@@ -53,9 +53,11 @@ class SignupViewModel(application: Application): BaseViewModel(application) {
 
     private fun performLoginApiCall() {
         val cred = JSONObject()
-        cred.put(getApplication<Application>().resources.getString(R.string.name_key),name.value)
-        cred.put(getApplication<Application>().resources.getString(R.string.email_key), email.value)
-        cred.put(getApplication<Application>().resources.getString(R.string.password_key),password.value)
+        cred.apply {
+            put(getApplication<Application>().resources.getString(R.string.name_key),name.value)
+            put(getApplication<Application>().resources.getString(R.string.email_key), email.value)
+            put(getApplication<Application>().resources.getString(R.string.password_key),password.value)
+        }
         val url = URL(CREATE_USER_BASE_URL)
         apiCall(cred,url, POST,Any::class.java,object : HTTPCallback {
             override fun <T> successCallback(output: String, dataClass: T?) {
