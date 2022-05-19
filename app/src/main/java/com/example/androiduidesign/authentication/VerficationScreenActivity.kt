@@ -66,10 +66,10 @@ class VerficationScreenActivity : AppCompatActivity() {
             finish()
         }
         binding.btnVerify.setOnClickListener {
-            if (edit_text_otp_one.toString().isNullOrEmpty() && edit_text_otp_two.toString().isNullOrEmpty() && edit_text_otp_three.toString().isNullOrEmpty() && edit_text_otp_four.toString().isNullOrEmpty()){
-                Toast.makeText(this,getString(R.string.toast_verfication_button_tapped),Toast.LENGTH_SHORT).show()
-            } else {
+            if (edit_text_otp_one.text.toString().isEmpty() || edit_text_otp_two.text.toString().isEmpty() || edit_text_otp_three.text.toString().isEmpty()|| edit_text_otp_four.text.toString().isEmpty()){
                 Toast.makeText(this,getString(R.string.toast_enter_otp),Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this,getString(R.string.toast_verfication_button_tapped),Toast.LENGTH_SHORT).show()
             }
         }
     }

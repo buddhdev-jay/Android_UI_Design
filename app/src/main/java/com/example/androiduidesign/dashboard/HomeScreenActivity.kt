@@ -13,12 +13,12 @@ import com.example.androiduidesign.databinding.ActivityHomeScreenBinding
 class HomeScreenActivity : AppCompatActivity(),View.OnClickListener{
     lateinit var binding: ActivityHomeScreenBinding
     private var categoriesItemList: ArrayList<CategoriesItemModel> = arrayListOf()
-    var categoriesadapter: CategoriesAdapter? = null
+    var categoriesadapter: categoriesAdapter? = null
     var recommendationItemList: ArrayList<RecommendationItemModel> = arrayListOf()
-    var recommendationadapter: RecommendationAdapter? = null
+    var recommendationadapter: recommendationAdapter? = null
     var discountItemList: ArrayList<DiscountItemModel> = arrayListOf()
-    var discountadapter: DiscountAdapter? = null
-    var foodCategoriesadapter: FoodCategoriesAdapter? = null
+    var discountadapter: discountAdapter? = null
+    var foodCategoriesadapter: foodCategoriesAdapter? = null
     var cateegoriesItemListTakasimuraaa :ArrayList<RecommendationItemModel> = arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +36,13 @@ class HomeScreenActivity : AppCompatActivity(),View.OnClickListener{
 
     private fun setAdapter() {
         setData()
-        categoriesadapter = CategoriesAdapter(categoriesItemList)
+        categoriesadapter = categoriesAdapter(categoriesItemList)
         binding.recyclerviewCategories.adapter = categoriesadapter
-        recommendationadapter = RecommendationAdapter(recommendationItemList)
+        recommendationadapter = recommendationAdapter(recommendationItemList)
         binding.recyclerviewRecommendation.adapter = recommendationadapter
-        discountadapter = DiscountAdapter(discountItemList)
+        discountadapter = discountAdapter(discountItemList)
         binding.recyclerviewDiscount.adapter = discountadapter
-        foodCategoriesadapter = FoodCategoriesAdapter(cateegoriesItemListTakasimuraaa)
+        foodCategoriesadapter = foodCategoriesAdapter(cateegoriesItemListTakasimuraaa)
         binding.recyclerviewCategoriesItemOne.adapter = foodCategoriesadapter
     }
 

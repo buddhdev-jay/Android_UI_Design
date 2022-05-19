@@ -31,15 +31,14 @@ class SignInActivity : AppCompatActivity() {
                 startActivity(Intent(this@SignInActivity,SignupActivity::class.java))
             }
             btnSignIn.setOnClickListener {
-                validation()
                 when {
-                    this.ediTxtSignInEmail.text.toString().isEmpty() -> {
+                    ediTxtSignInEmail.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_email_empty), Toast.LENGTH_SHORT).show()
                     }
-                    this.editxtSignInPassword.text.toString().isEmpty() -> {
+                    editxtSignInPassword.text.toString().isEmpty() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
                     }
-                    !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignInEmail.text.toString()).matches() -> {
+                    !Patterns.EMAIL_ADDRESS.matcher(ediTxtSignInEmail.text.toString()).matches() -> {
                         Toast.makeText(this@SignInActivity,getString(R.string.toast_email_not_valid),Toast.LENGTH_SHORT).show()
                     }
                     else -> {
@@ -62,8 +61,6 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun validation() {
-    }
 
     private fun setSpannableText() {
         val spannable = SpannableString(binding.textviewNotHaveAccount.text)

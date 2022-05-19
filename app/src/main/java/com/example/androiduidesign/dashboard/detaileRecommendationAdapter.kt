@@ -8,7 +8,7 @@ import com.example.androiduidesign.databinding.CategoriesItemLayoutBinding
 import com.example.androiduidesign.databinding.RecommendationRestaurantsHeaderItemLayoutBinding
 import com.example.androiduidesign.databinding.RecommendationRestaurantsSectionItemLayoutBinding
 
-class DetaileRecommendationAdapter(private val DetailRecommendationItems: List<DetailRecommendationModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class detaileRecommendationAdapter(private val DetailRecommendationItems: List<DetailRecommendationModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ItemHolder(val binding: RecommendationRestaurantsHeaderItemLayoutBinding): RecyclerView.ViewHolder(binding.root)
     class SectionHolder(val binding: RecommendationRestaurantsSectionItemLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
