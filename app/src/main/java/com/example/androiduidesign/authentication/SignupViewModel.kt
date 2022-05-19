@@ -38,6 +38,8 @@ class SignupViewModel(application: Application) : AndroidViewModel(application) 
             logInResult.value = getApplication<Application>().resources.getString(R.string.toast_password_empty)
         }else if(cpassword.value.isNullOrEmpty()) {
             logInResult.value = getApplication<Application>().resources.getString(R.string.toast_confirm_password)
+        } else if (passwordStatus.value != 4){
+           logInResult.value = getApplication<Application>().resources.getString(R.string.password_should_strong)
         } else {
             logInResult.value = getApplication<Application>().resources.getString(R.string.signup_btn_clicked)
         }

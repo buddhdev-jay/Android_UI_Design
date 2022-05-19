@@ -36,7 +36,7 @@
     <string name="numeric_regex">[0-9]</string>
     <string name="small_alphabet_regex">[a-z]</string>
     <string name="upper_alphabet_regex">[A-Z]</string>
-    <string name="signup_btn_clicked">Signup Button Clicked</string>
+    <string name="signup_btn_clicked">User Created Successfully</string>
     <string name="toast_name_empty">Name Empty</string>
     <string name="toast_email_empty">Email Empty</string>
     <string name="toast_password_empty">password Empty</string>
@@ -98,6 +98,9 @@
     <string name="text_family_package">Super Family Package</string>
     <string name="zero_quantity">0</string>
     <string name="food_item_description">2 Chicken Wings, 2 Rice, ...</string>
+    <string name="password_should_strong">Password should be Strong</string>
+    <string name="text_otp_time_finish">Times Up Again Request For OTP</string>
+    <string name="otp_time_format">%02d:%02d</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

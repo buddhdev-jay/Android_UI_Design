@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.method.LinkMovementMethod
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -13,8 +14,10 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
+import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.THIRTYTHREE
 import com.example.androiduidesign.utils.TWENTY
+import com.example.androiduidesign.utils.TWENTYSIX
 import com.example.androiduidesign.utils.getSpannable
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_four
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_one
@@ -92,12 +95,12 @@ class VerficationScreenActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 val m = (millisUntilFinished / 1000) / 60
                 val s = (millisUntilFinished / 1000) % 60
-                val format = String.format("%02d:%02d", m, s)
+                val format = String.format(getString(R.string.otp_time_format), m, s)
                 binding.textViewTextResendCode.text = getString(R.string.text_resend_code,format)
             }
 
             override fun onFinish() {
-                binding.textViewTextResendCode.setText("done!")
+                binding.textViewTextResendCode.text = getString(R.string.text_otp_time_finish)
             }
         }.start()
     }
@@ -111,5 +114,6 @@ class VerficationScreenActivity : AppCompatActivity() {
             finish()
         }
         binding.textviewUpdateNumber.text = spannable
+        binding.textviewUpdateNumber.movementMethod = LinkMovementMethod.getInstance()
     }
 }

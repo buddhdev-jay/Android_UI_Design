@@ -20,8 +20,12 @@ import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivitySignupBinding
 import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.ONE
+import com.example.androiduidesign.utils.THIRTYONE
+import com.example.androiduidesign.utils.TWENETYFOUR
 import com.example.androiduidesign.utils.TWENTYSIX
 import com.example.androiduidesign.utils.ZERO
+import com.example.androiduidesign.utils.getSpannable
+import com.example.androiduidesign.utils.showMessage
 import kotlinx.android.synthetic.main.activity_signup.btn_signup
 import kotlinx.android.synthetic.main.activity_signup.img_view_back_arrow
 
@@ -39,52 +43,27 @@ class SignupActivity : AppCompatActivity() {
             finish()
         }
         btn_signup.setOnClickListener {
-            binding.apply {
-                when {
-                    this.ediTxtSignupFullName.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_name_empty),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupEmail.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_email_empty),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupPassword.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_password_empty),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupConfirmPassword.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_confirm_password),Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupPhoneNumber.text.toString().isEmpty() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_phone_empty) ,Toast.LENGTH_SHORT).show()
-                    }
-                    this.ediTxtSignupPhoneNumber.text.toString().length < 10 -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_valid_phone),Toast.LENGTH_SHORT).show()
-                    }
-                    !Patterns.EMAIL_ADDRESS.matcher(this.ediTxtSignupEmail.text.toString()).matches() -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.toast_email_not_valid),Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        Toast.makeText(this@SignupActivity,getString(R.string.signup_btn_clicked),Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
+         signupViewModel.performValidation()
         }
-
+        signupViewModel.logInResult.observe(this){  result ->
+            showMessage(this,result)
+        }
         signupViewModel.password.observe(this) { password ->
             password.apply {
-                if (this.isNotEmpty()) {
-                    var passwordstatusupdate = ONE
-                    if (this.length >= 8) {
-                        if (this.toString().contains(getString(R.string.numeric_regex).toRegex())) {
-                            passwordstatusupdate += ONE
+                if (isNotEmpty()) {
+                    var passwordStatusUpdate = ONE
+                    if (length >= 8) {
+                        if (toString().contains(getString(R.string.numeric_regex).toRegex())) {
+                            passwordStatusUpdate += ONE
                         }
-                        if (this.toString().contains(getString(R.string.small_alphabet_regex).toRegex())) {
-                            passwordstatusupdate += ONE
+                        if (toString().contains(getString(R.string.small_alphabet_regex).toRegex())) {
+                            passwordStatusUpdate += ONE
                         }
-                        if (this.toString().contains(getString(R.string.upper_alphabet_regex).toRegex())) {
-                            passwordstatusupdate += ONE
+                        if (toString().contains(getString(R.string.upper_alphabet_regex).toRegex())) {
+                            passwordStatusUpdate += ONE
                         }
                     }
-                    signupViewModel.passwordStatus.value = passwordstatusupdate
+                    signupViewModel.passwordStatus.value = passwordStatusUpdate
                 } else {
                     signupViewModel.passwordStatus.value = ZERO
                 }
@@ -107,19 +86,7 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun setSpannableText() {
-        val spannable = SpannableString(binding.textviewNotHaveAccount.text)
-        val clickableSpan2: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(p0: View) {
-                val signInIntent = Intent(this@SignupActivity,SignInActivity::class.java)
-                startActivity(signInIntent)
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                ds.setColor(ContextCompat.getColor(applicationContext, R.color.green_500))
-                ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
-            }
-        }
-        spannable.setSpan(clickableSpan2, NINETEEN, TWENTYSIX, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        val spannable = getSpannable(binding.textviewNotHaveAccount.text.toString(), NINETEEN, TWENTYSIX, ContextCompat.getColor(this@SignupActivity, R.color.green_500)) {}
         binding.textviewNotHaveAccount.text = spannable
         binding.textviewNotHaveAccount.movementMethod = LinkMovementMethod.getInstance()
     }

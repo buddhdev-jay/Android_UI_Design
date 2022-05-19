@@ -69,6 +69,7 @@
                 android:fontFamily="@font/manropesemibold"
                 android:imeOptions="actionNext"
                 android:inputType="textPersonName"
+                android:text="@={viewModel.name}"
                 android:textCursorDrawable="@drawable/cursor_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_signup_full_name_header" />
@@ -88,6 +89,7 @@
                 android:fontFamily="@font/manropesemibold"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
+                android:text="@={viewModel.email}"
                 android:textCursorDrawable="@drawable/cursor_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_signup_email_header" />
@@ -213,6 +215,7 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:text="@={viewModel.cpassword}"
                     android:textSize="@dimen/_12ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -246,6 +249,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="phone"
                 android:maxLength="10"
+                android:text="@={viewModel.mobileNo}"
                 android:textCursorDrawable="@drawable/cursor_style"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/spinner_country_code"
