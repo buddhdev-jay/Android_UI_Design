@@ -25,7 +25,5 @@ class FoodCategoriesAdapter(private val FoodCategoriesItems: ArrayList<Recommend
         holder.bind(FoodCategoriesItems[position])
     }
 
-    override fun getItemCount(): Int {
-        return FoodCategoriesItems.size
-    }
+    override fun getItemCount(): Int = FoodCategoriesItems.size
 }

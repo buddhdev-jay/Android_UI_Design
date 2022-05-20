@@ -24,7 +24,5 @@ class CategoriesAdapter(private val CategoriesItems: ArrayList<CategoriesItemMod
         holder.bind(CategoriesItems[position])
     }
 
-    override fun getItemCount(): Int {
-        return CategoriesItems.size
-    }
+    override fun getItemCount(): Int = CategoriesItems.size
 }

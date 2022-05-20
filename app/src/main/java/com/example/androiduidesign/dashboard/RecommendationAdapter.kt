@@ -22,11 +22,7 @@ class RecommendationAdapter(private val RecommendationsItems: ArrayList<Recommen
         return RecommendationAdapter.RecommendationViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecommendationViewHolder, position: Int) {
-        holder.bind(RecommendationsItems[position])
-    }
+    override fun onBindViewHolder(holder: RecommendationViewHolder, position: Int) =  holder.bind(RecommendationsItems[position])
 
-    override fun getItemCount(): Int {
-        return RecommendationsItems.size
-    }
+    override fun getItemCount(): Int = RecommendationsItems.size
 }

@@ -26,7 +26,5 @@ class DiscountAdapter(private val DiscountItems: ArrayList<DiscountItemModel>) :
         holder.bind(DiscountItems[position])
     }
 
-    override fun getItemCount(): Int {
-        return DiscountItems.size
-    }
+    override fun getItemCount(): Int = DiscountItems.size
 }

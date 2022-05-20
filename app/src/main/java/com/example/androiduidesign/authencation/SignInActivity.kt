@@ -38,9 +38,9 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
         }
 
         loginViewModel.logInResult.observe(this) { result ->
-            if (result == getString(R.string.result_ok)) {
+            if (result == getString(R.string.login_successful)) {
                 showMessage(this,result)
-                startActivity(Intent(this,HomeScreenActivity::class.java))
+                startActivity(Intent(this@SignInActivity,HomeScreenActivity::class.java))
                 finish()
             } else {
                 showMessage(this,result)
