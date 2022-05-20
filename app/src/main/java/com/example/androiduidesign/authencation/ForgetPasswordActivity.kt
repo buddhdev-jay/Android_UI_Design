@@ -18,6 +18,8 @@ import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityForgetPasswordBinding
 import com.example.androiduidesign.utils.THIRTYEIGHT
 import com.example.androiduidesign.utils.THIRTYONE
+import com.example.androiduidesign.utils.TWENETYFOUR
+import com.example.androiduidesign.utils.getSpannable
 import kotlinx.android.synthetic.main.activity_forget_password.img_view_back_arrow_forget_password
 
 class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
@@ -62,22 +64,16 @@ class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
     }
 
     private fun setSpannableText() {
-        val spannable = SpannableString(binding.textviewHaveAccountForgetPassword.text)
-        val clickableSpan2: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(p0: View) {
-                val forgetPasswordIntent = Intent(this@ForgetPasswordActivity,SignInActivity::class.java)
-                startActivity(forgetPasswordIntent)
-                finish()
-            }
 
-            override fun updateDrawState(ds: TextPaint) {
-                ds.setColor(ContextCompat.getColor(applicationContext, R.color.green_500))
-                ds.bgColor = ContextCompat.getColor(applicationContext, R.color.white)
-            }
+        val spannable = getSpannable(binding.textviewHaveAccountForgetPassword.text.toString(), THIRTYONE, THIRTYEIGHT, ContextCompat.getColor(this@ForgetPasswordActivity, R.color.green_500)) {
+            val signInIntent = Intent(this@ForgetPasswordActivity, ForgetPasswordActivity::class.java)
+            startActivity(signInIntent)
+            finish()
         }
-        spannable.setSpan(clickableSpan2, THIRTYONE, THIRTYEIGHT, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.textviewHaveAccountForgetPassword.text = spannable
-        binding.textviewHaveAccountForgetPassword.movementMethod = LinkMovementMethod.getInstance()
+        binding.textviewHaveAccountForgetPassword.apply {
+            text = spannable
+            movementMethod = LinkMovementMethod.getInstance()
+        }
     }
 
     override fun onClick(p0: View?) {

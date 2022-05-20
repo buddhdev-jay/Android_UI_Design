@@ -2,6 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.androiduidesign.authencation.LoginViewModel" />
+
+        <variable
+            name="onClickHandler"
+            type="android.view.View.OnClickListener" />
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
+                android:text="@={viewModel.email}"
                 android:textCursorDrawable="@drawable/cursor_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_signIn_email_header" />
@@ -82,6 +93,7 @@
                     android:focusable="true"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
+                    android:text="@={viewModel.password}"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textSize="@dimen/_10ssp" />
@@ -115,7 +127,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_signIn"
+                android:id="@+id/btn_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
@@ -125,6 +137,7 @@
                 android:fontFamily="@font/manropebold"
                 android:text="@string/btn_text_sign_in"
                 android:textAlignment="center"
+                android:onClick="@{onClickHandler::onClick}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@id/textview_forget_password" />
@@ -138,7 +151,7 @@
                 android:background="@color/grey"
                 app:layout_constraintEnd_toStartOf="@id/textview_Or"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_signIn" />
+                app:layout_constraintTop_toBottomOf="@id/btn_sign_in" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_Or"
@@ -153,7 +166,7 @@
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toStartOf="@id/view_ending"
                 app:layout_constraintStart_toEndOf="@id/view_starting"
-                app:layout_constraintTop_toBottomOf="@id/btn_signIn" />
+                app:layout_constraintTop_toBottomOf="@id/btn_sign_in" />
 
             <View
                 android:id="@+id/view_ending"
@@ -165,7 +178,7 @@
                 android:background="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/textview_Or"
-                app:layout_constraintTop_toBottomOf="@id/btn_signIn" />
+                app:layout_constraintTop_toBottomOf="@id/btn_sign_in" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_face_id"
@@ -176,6 +189,7 @@
                 android:drawableStart="@drawable/face_id_icone"
                 android:fontFamily="@font/manropemedium"
                 android:text="@string/btn_text_face_id"
+                android:onClick="@{onClickHandler::onClick}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_Or" />
 
@@ -188,6 +202,7 @@
                 android:drawableStart="@drawable/google_icone"
                 android:text="@string/btn_text_google"
                 app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{onClickHandler::onClick}"
                 app:layout_constraintTop_toBottomOf="@id/btn_face_id" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -198,6 +213,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/facebook_icone"
                 android:text="@string/btn_text_facebook"
+                android:onClick="@{onClickHandler::onClick}"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_google" />

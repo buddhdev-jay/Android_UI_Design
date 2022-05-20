@@ -102,7 +102,13 @@
     <string name="food_item_description">2 Chicken Wings, 2 Rice, ...</string>
     <string name="name_key">name</string>
     <string name="email_key">email</string>
-    <string name="password_key">passsword</string>
+    <string name="password_key">password</string>
+    <string name="result_ok">OK</string>
+    <string name="login_successful">Login Successful</string>
+    <string name="login_unsuccessful">Invalid Credentials Please Try Again</string>
+    <string name="user_created_message">User Created SuccessFully</string>
+    <string name="user_not_created">Sorry User not Created Please Try Again</string>
+    <string name="text_api_response">API Response</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

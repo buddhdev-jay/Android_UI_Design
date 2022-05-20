@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="dataModel"
             type="com.example.androiduidesign.dashboard.RecommendationItemModel" />
     </data>
 
@@ -24,7 +24,7 @@
                 android:id="@+id/img_view_recommendation_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@{viewModel.image}"
+                android:src="@{dataModel.image}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
-                android:text="@{viewModel.discount}"
+                android:text="@{dataModel.discount}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp"
                 app:fontFamily="@font/manropesemibold"
@@ -58,7 +58,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/manropemedium"
-                android:text="@{viewModel.distance}"
+                android:text="@{dataModel.distance}"
                 android:textColor="#4B4F58"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/manropemedium"
-                android:text="@{viewModel.time}"
+                android:text="@{dataModel.time}"
                 android:textColor="#4B4F58"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toEndOf="@id/dot_separtor"
@@ -95,7 +95,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:fontFamily="@font/manropebold"
-                android:text="@{viewModel.name}"
+                android:text="@{dataModel.name}"
                 android:textColor="#1E232E"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +120,7 @@
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_3sdp"
                 android:fontFamily="@font/manropemedium"
-                android:text="@{viewModel.stars}"
+                android:text="@{dataModel.stars}"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:text="@{viewModel.rating}"
+                android:text="@{dataModel.rating}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/dot_separtor_two"
                 app:layout_constraintTop_toBottomOf="@id/text_view_text_name" />

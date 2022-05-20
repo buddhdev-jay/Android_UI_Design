@@ -11,4 +11,6 @@ const val  TWENTY = 20
 const val THIRTYTHREE = 33
 const val TWOTHOUSAND = 2000
 const val POST = "POST"
-const val CREATE_USER_BASE_URL = "https://6283714992a6a5e46223ee72.mockapi.io/api/v1/createUser"
+const val BASE_URL = "https://reqres.in/api/"
+const val LOGIN_URL = "login"
+const val SIGNUP_URL = "register"

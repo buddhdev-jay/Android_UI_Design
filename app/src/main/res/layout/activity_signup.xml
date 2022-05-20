@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="com.example.androiduidesign.authencation.SignupViewModel" />
+
+        <variable
+            name="onClickHandler"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <ScrollView
@@ -25,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_28sdp"
+                android:onClick="@{onClickHandler::onClick}"
                 android:src="@drawable/ic_baseline_keyboard_backspace_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -213,9 +218,9 @@
                     android:focusable="true"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword"
-                    android:text="@={viewModel.cpassword}"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:text="@={viewModel.cpassword}"
                     android:textSize="@dimen/_12ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -277,6 +282,7 @@
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:background="@drawable/button_background"
                 android:fontFamily="@font/manropebold"
+                android:onClick="@{onClickHandler::onClick}"
                 android:text="@string/textview_text_sign_up"
                 android:textAlignment="center"
                 android:textColor="@color/white"

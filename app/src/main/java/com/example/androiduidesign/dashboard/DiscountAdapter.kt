@@ -10,7 +10,6 @@ import com.example.androiduidesign.databinding.DiscountItemLayoutBinding
 class DiscountAdapter(private val DiscountItems: ArrayList<DiscountItemModel>) :
     RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>()  {
 
-    lateinit var binding: DiscountItemLayoutBinding
     class DiscountViewHolder(private val binding: DiscountItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(itemViewModel: DiscountItemModel) {
@@ -19,7 +18,7 @@ class DiscountAdapter(private val DiscountItems: ArrayList<DiscountItemModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscountViewHolder {
-        binding = DiscountItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+       val  binding = DiscountItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DiscountAdapter.DiscountViewHolder(binding)
     }
 
