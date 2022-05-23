@@ -5,17 +5,22 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import com.example.androiduidesign.R
 import com.example.androiduidesign.utils.API_RESPONSE_LOG
+import com.example.androiduidesign.utils.ApiInterface
 import com.example.androiduidesign.utils.BASE_URL
 import com.example.androiduidesign.utils.EMAIL
 import com.example.androiduidesign.utils.LOGIN_URL
 import com.example.androiduidesign.utils.PASSWORD
 import com.example.androiduidesign.utils.POST
+import com.example.androiduidesign.webservice.with_retrofit.RetrofitBaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.BaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
 import java.net.URL
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class LoginViewModel(): BaseViewModel() {
+class LoginViewModel(): RetrofitBaseViewModel() {
 
     val password : MutableLiveData<String> = MutableLiveData()
     var email: MutableLiveData<String> = MutableLiveData()
@@ -38,22 +43,16 @@ class LoginViewModel(): BaseViewModel() {
     }
 
     private fun performLoginApiCall() {
-        val cred = JSONObject()
-        cred.apply {
-            put(EMAIL, email.value)
-            put(PASSWORD,password.value)
-        }
-        val url = URL(BASE_URL + LOGIN_URL)
-        apiCall(cred, url, POST, LoginModel::class.java, object : HTTPCallback {
-            override fun <T> successCallback(output: String, dataClass: T?) {
-                logInResult.postValue(LoginResponseModel(true,dataClass))
-                Log.d(API_RESPONSE_LOG,output)
+        val retrofit = ApiInterface.create().loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
+        retrofit.enqueue(object : Callback<UserModel>{
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                logInResult.postValue(LoginResponseModel(true, response))
+            }
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                logInResult.postValue(LoginResponseModel(false,Any::class.java))
             }
 
-            override fun failureCallback(responseCode: Int, output: String) {
-                logInResult.postValue(LoginResponseModel(false,Any::class.java))
-                Log.d(API_RESPONSE_LOG,output)
-            }
         })
+
     }
 }

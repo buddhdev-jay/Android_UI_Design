@@ -6,6 +6,7 @@ import android.util.Patterns
 import androidx.lifecycle.MutableLiveData
 import com.example.androiduidesign.R
 import com.example.androiduidesign.utils.API_RESPONSE_LOG
+import com.example.androiduidesign.utils.ApiInterface
 import com.example.androiduidesign.utils.BASE_URL
 import com.example.androiduidesign.utils.EMAIL
 import com.example.androiduidesign.utils.PASSWORD
@@ -13,12 +14,16 @@ import com.example.androiduidesign.utils.POST
 import com.example.androiduidesign.utils.SIGNUP_URL
 import com.example.androiduidesign.utils.TEN
 import com.example.androiduidesign.utils.ZERO
+import com.example.androiduidesign.webservice.with_retrofit.RetrofitBaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.BaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
 import java.net.URL
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class SignupViewModel(): BaseViewModel() {
+class SignupViewModel(): RetrofitBaseViewModel() {
     val passwordStatus : MutableLiveData<Int> = MutableLiveData(ZERO)
     val password :MutableLiveData<String> = MutableLiveData()
     val cpassword : MutableLiveData<String> = MutableLiveData()
@@ -55,21 +60,13 @@ class SignupViewModel(): BaseViewModel() {
     }
 
     private fun performLoginApiCall() {
-        val cred = JSONObject()
-        cred.apply {
-            put(EMAIL, email.value)
-            put(PASSWORD, password.value)
-        }
-        val url = URL(BASE_URL + SIGNUP_URL)
-        apiCall(cred, url, POST, RegisterModel::class.java, object : HTTPCallback {
-            override fun <T> successCallback(output: String, dataClass: T?) {
-                signupResult.postValue(RegisterResponseModel(true,dataClass))
-                Log.d(API_RESPONSE_LOG,output)
+        val retrofit = ApiInterface.create().loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
+        retrofit.enqueue(object : Callback<UserModel> {
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                signupResult.postValue(RegisterResponseModel(true, response))
             }
-
-            override fun failureCallback(responseCode: Int, output: String) {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
                 signupResult.postValue(RegisterResponseModel(false,Any::class.java))
-                Log.d(API_RESPONSE_LOG,output)
             }
         })
     }
