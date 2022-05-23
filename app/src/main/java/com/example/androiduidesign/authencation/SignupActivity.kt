@@ -35,11 +35,17 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialSetup()
-        signupViewModel.signupResult.observe(this){ result ->
-            binding.progressbarSignUp.visibility = View.INVISIBLE
-            showMessage(this,getString(result))
-            startActivity(Intent(this@SignupActivity,SignInActivity::class.java))
-            finish()
+        signupViewModel.signupResult.observe(this){ response ->
+            if(response.isSuccess){
+                binding.progressbarSignUp.visibility = View.INVISIBLE
+                showMessage(this,getString(R.string.user_created_message))
+                startActivity(Intent(this@SignupActivity,SignInActivity::class.java))
+                finish()
+            } else {
+                binding.progressbarSignUp.visibility = View.INVISIBLE
+                showMessage(this,getString(R.string.user_not_created))
+            }
+
         }
         signupViewModel.password.observe(this) { password ->
             password.apply {

@@ -37,16 +37,19 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
             startActivity(Intent(this,SignupActivity::class.java))
         }
 
-        loginViewModel.logInResult.observe(this) { result ->
-            if (getString(result) == getString(R.string.login_successful)) {
+        loginViewModel.logInResult.observe(this) { response ->
+            if (response.isSuccess) {
                 binding.progressbarSignIn.visibility = View.INVISIBLE
-                showMessage(this,getString(result))
-                startActivity(Intent(this@SignInActivity,HomeScreenActivity::class.java))
+                showMessage(this, getString(R.string.login_successful))
+                startActivity(Intent(this@SignInActivity, HomeScreenActivity::class.java))
                 finish()
             } else {
                 binding.progressbarSignIn.visibility = View.INVISIBLE
-                showMessage(this,getString(result))
+                showMessage(this, getString(R.string.login_unsuccessful))
             }
+        }
+        loginViewModel.validationResult.observe(this) { validationResult ->
+            showMessage(this, getString(validationResult))
         }
     }
 

@@ -22,7 +22,8 @@ class SignupViewModel(): BaseViewModel() {
     val passwordStatus : MutableLiveData<Int> = MutableLiveData(ZERO)
     val password :MutableLiveData<String> = MutableLiveData()
     val cpassword : MutableLiveData<String> = MutableLiveData()
-    val signupResult = MutableLiveData<Int>()
+    val signupResult = MutableLiveData<RegisterResponseModel>()
+    val validationResult = MutableLiveData<Int>()
     var email: MutableLiveData<String> = MutableLiveData()
     var name: MutableLiveData<String> = MutableLiveData()
     var mobileNo: MutableLiveData<String> = MutableLiveData()
@@ -30,24 +31,24 @@ class SignupViewModel(): BaseViewModel() {
     fun performValidation() {
 
         if (email.value.isNullOrEmpty()) {
-            signupResult.value = R.string.toast_email_empty
+            validationResult.value = R.string.toast_email_empty
             return
         } else if (mobileNo.value.isNullOrEmpty()) {
-            signupResult.value = R.string.toast_phone_empty
+            validationResult.value = R.string.toast_phone_empty
             return
         } else if (name.value.isNullOrEmpty()) {
-            signupResult.value = R.string.toast_name_empty
+            validationResult.value = R.string.toast_name_empty
             return
         } else if (mobileNo.value?.length ?: TEN < TEN) {
-            signupResult.value = R.string.toast_valid_phone
+            validationResult.value = R.string.toast_valid_phone
             return
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email.value).matches()) {
-            signupResult.value = R.string.toast_email_not_valid
+            validationResult.value = R.string.toast_email_not_valid
             return
         } else if (password.value.isNullOrEmpty()) {
-            signupResult.value = R.string.toast_password_empty
+            validationResult.value = R.string.toast_password_empty
         } else if(cpassword.value.isNullOrEmpty()) {
-            signupResult.value = R.string.toast_confirm_password
+            validationResult.value = R.string.toast_confirm_password
         } else {
             performLoginApiCall()
         }
@@ -60,14 +61,14 @@ class SignupViewModel(): BaseViewModel() {
             put(PASSWORD, password.value)
         }
         val url = URL(BASE_URL + SIGNUP_URL)
-        apiCall(cred, url, POST, Any::class.java, object : HTTPCallback {
+        apiCall(cred, url, POST, RegisterModel::class.java, object : HTTPCallback {
             override fun <T> successCallback(output: String, dataClass: T?) {
-                signupResult.postValue(R.string.user_created_message)
+                signupResult.postValue(RegisterResponseModel(true,dataClass))
                 Log.d(API_RESPONSE_LOG,output)
             }
 
             override fun failureCallback(responseCode: Int, output: String) {
-                signupResult.postValue(R.string.user_not_created)
+                signupResult.postValue(RegisterResponseModel(false,Any::class.java))
                 Log.d(API_RESPONSE_LOG,output)
             }
         })
