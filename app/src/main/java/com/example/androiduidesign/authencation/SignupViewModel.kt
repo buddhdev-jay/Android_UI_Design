@@ -11,13 +11,15 @@ import com.example.androiduidesign.utils.EMAIL
 import com.example.androiduidesign.utils.PASSWORD
 import com.example.androiduidesign.utils.POST
 import com.example.androiduidesign.utils.SIGNUP_URL
+import com.example.androiduidesign.utils.TEN
+import com.example.androiduidesign.utils.ZERO
 import com.example.androiduidesign.webservice.without_retrofit.BaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
 import java.net.URL
 import org.json.JSONObject
 
 class SignupViewModel(): BaseViewModel() {
-    val passwordStatus : MutableLiveData<Int> = MutableLiveData(0)
+    val passwordStatus : MutableLiveData<Int> = MutableLiveData(ZERO)
     val password :MutableLiveData<String> = MutableLiveData()
     val cpassword : MutableLiveData<String> = MutableLiveData()
     val signupResult = MutableLiveData<Int>()
@@ -36,7 +38,7 @@ class SignupViewModel(): BaseViewModel() {
         } else if (name.value.isNullOrEmpty()) {
             signupResult.value = R.string.toast_name_empty
             return
-        } else if (mobileNo.value?.length ?: 10 < 10) {
+        } else if (mobileNo.value?.length ?: TEN < TEN) {
             signupResult.value = R.string.toast_valid_phone
             return
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email.value).matches()) {
