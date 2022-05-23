@@ -11,6 +11,8 @@ import com.example.androiduidesign.utils.EMAIL
 import com.example.androiduidesign.utils.LOGIN_URL
 import com.example.androiduidesign.utils.PASSWORD
 import com.example.androiduidesign.utils.POST
+import com.example.androiduidesign.webservice.with_retrofit.ApiCallBackListener
+import com.example.androiduidesign.webservice.with_retrofit.ErrorResponse
 import com.example.androiduidesign.webservice.with_retrofit.RetrofitBaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.BaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
@@ -44,15 +46,14 @@ class LoginViewModel(): RetrofitBaseViewModel() {
 
     private fun performLoginApiCall() {
         val retrofit = ApiInterface.create().loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
-        retrofit.enqueue(object : Callback<UserModel>{
-            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                logInResult.postValue(LoginResponseModel(true, response))
-            }
-            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                logInResult.postValue(LoginResponseModel(false,Any::class.java))
+        call(retrofit,object : ApiCallBackListener {
+            override fun <T : Any> onSuccess(data: T) {
+                logInResult.postValue(LoginResponseModel(true, data))
             }
 
+            override fun onFailure(error: ErrorResponse) {
+                logInResult.postValue(LoginResponseModel(false,error))
+            }
         })
-
     }
 }

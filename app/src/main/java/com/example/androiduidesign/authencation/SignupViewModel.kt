@@ -14,6 +14,8 @@ import com.example.androiduidesign.utils.POST
 import com.example.androiduidesign.utils.SIGNUP_URL
 import com.example.androiduidesign.utils.TEN
 import com.example.androiduidesign.utils.ZERO
+import com.example.androiduidesign.webservice.with_retrofit.ApiCallBackListener
+import com.example.androiduidesign.webservice.with_retrofit.ErrorResponse
 import com.example.androiduidesign.webservice.with_retrofit.RetrofitBaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.BaseViewModel
 import com.example.androiduidesign.webservice.without_retrofit.HTTPCallback
@@ -60,13 +62,14 @@ class SignupViewModel(): RetrofitBaseViewModel() {
     }
 
     private fun performLoginApiCall() {
-        val retrofit = ApiInterface.create().loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
-        retrofit.enqueue(object : Callback<UserModel> {
-            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-                signupResult.postValue(RegisterResponseModel(true, response))
+        val retrofit = ApiInterface.create().signupUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
+        call(retrofit,object : ApiCallBackListener {
+            override fun <T : Any> onSuccess(data: T) {
+                signupResult.postValue(RegisterResponseModel(true, data))
             }
-            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                signupResult.postValue(RegisterResponseModel(false,Any::class.java))
+
+            override fun onFailure(error: ErrorResponse) {
+                signupResult.postValue(RegisterResponseModel(false,error))
             }
         })
     }

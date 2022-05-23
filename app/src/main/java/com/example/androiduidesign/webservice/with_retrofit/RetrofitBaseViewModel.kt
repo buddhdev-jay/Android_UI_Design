@@ -12,8 +12,8 @@ open class RetrofitBaseViewModel :ViewModel() {
     fun<T: Any> call(retrofitCall: Call<T>, apiCallBackListener: ApiCallBackListener) {
         retrofitCall.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                response.body()?.let {
-                    apiCallBackListener.onSuccess(it)
+                response.body()?.let { responseBody ->
+                    apiCallBackListener.onSuccess(responseBody)
                 }
                 response.errorBody()?.let {
                     val error = JSONObject(it.charStream().readText())
