@@ -125,7 +125,15 @@
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
-
+            <ProgressBar
+                android:id="@+id/progressbar_sign_in"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@id/btn_sign_in"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:indeterminateTint="@color/green_500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_in"
                 android:layout_width="match_parent"

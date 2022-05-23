@@ -20,9 +20,7 @@ class CategoriesAdapter(private val CategoriesItems: ArrayList<CategoriesItemMod
         return CategoriesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        holder.bind(CategoriesItems[position])
-    }
+    override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) =  holder.bind(CategoriesItems[position])
 
     override fun getItemCount(): Int = CategoriesItems.size
 }

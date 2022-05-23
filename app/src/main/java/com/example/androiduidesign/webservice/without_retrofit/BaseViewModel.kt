@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
-open class BaseViewModel(application: Application):AndroidViewModel(application){
+open class BaseViewModel():ViewModel(){
 
     fun<T> apiCall(jsonObject: JSONObject, url: URL, requestmethod: String, data: Class<T>,
         httpCallback: HTTPCallback){

@@ -38,21 +38,21 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
         }
 
         loginViewModel.logInResult.observe(this) { result ->
-            if (result == getString(R.string.login_successful)) {
-                showMessage(this,result)
+            if (getString(result) == getString(R.string.login_successful)) {
+                binding.progressbarSignIn.visibility = View.INVISIBLE
+                showMessage(this,getString(result))
                 startActivity(Intent(this@SignInActivity,HomeScreenActivity::class.java))
                 finish()
             } else {
-                showMessage(this,result)
+                binding.progressbarSignIn.visibility = View.INVISIBLE
+                showMessage(this,getString(result))
             }
-
         }
-
     }
 
     private fun setSpannableText() {
         val spannable = getSpannable(binding.textviewNotHaveAccount.text.toString(), TWENETYFOUR, THIRTYONE, ContextCompat.getColor(this@SignInActivity, R.color.green_500)) {
-            val signInIntent = Intent(this@SignInActivity, ForgetPasswordActivity::class.java)
+            val signInIntent = Intent(this@SignInActivity, SignupActivity::class.java)
             startActivity(signInIntent)
             finish()
         }
@@ -77,6 +77,7 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
         binding.apply {
             when (p0) {
                 btnSignIn -> {
+                    progressbarSignIn.visibility = View.VISIBLE
                     loginViewModel.performValidation()
                 }
                 btnFaceId -> {

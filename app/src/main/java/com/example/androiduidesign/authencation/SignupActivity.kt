@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
+import com.example.androiduidesign.dashboard.HomeScreenActivity
 import com.example.androiduidesign.databinding.ActivitySignupBinding
 import com.example.androiduidesign.utils.NINETEEN
 import com.example.androiduidesign.utils.ONE
@@ -35,7 +36,10 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
         super.onCreate(savedInstanceState)
         initialSetup()
         signupViewModel.signupResult.observe(this){ result ->
-            showMessage(this,result)
+            binding.progressbarSignUp.visibility = View.INVISIBLE
+            showMessage(this,getString(result))
+            startActivity(Intent(this@SignupActivity,SignInActivity::class.java))
+            finish()
         }
         signupViewModel.password.observe(this) { password ->
             password.apply {
@@ -95,6 +99,7 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
                     finish()
                 }
                 btnSignup -> {
+                    binding.progressbarSignUp.visibility = View.VISIBLE
                     signupViewModel.performValidation()
                 }
             }
