@@ -30,7 +30,6 @@ class LoginViewModel(): RetrofitBaseViewModel() {
     val validationResult = MutableLiveData<Int>()
 
     fun performValidation() {
-
         if (email.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_email_empty
             return
