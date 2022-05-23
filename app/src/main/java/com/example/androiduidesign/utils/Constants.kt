@@ -10,6 +10,7 @@ const val NINETEEN =19
 const val  TWENTY = 20
 const val THIRTYTHREE = 33
 const val TWOTHOUSAND = 2000
+const val TEN = 10
 const val POST = "POST"
 const val BASE_URL = "https://reqres.in/api/"
 const val LOGIN_URL = "login"
