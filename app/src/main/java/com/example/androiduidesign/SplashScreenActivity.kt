@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import com.example.androiduidesign.authencation.SignInActivity
 import com.example.androiduidesign.onboardingscreen.OnBoardingActivity
+import com.example.androiduidesign.utils.TWOTHOUSAND
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,9 +16,10 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         initialSetup()
     }
+
     private fun initialSetup() {
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,OnBoardingActivity::class.java))
+            startActivity(Intent(this,SignInActivity::class.java))
             finish()
         }, TWOTHOUSAND.toLong())
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)

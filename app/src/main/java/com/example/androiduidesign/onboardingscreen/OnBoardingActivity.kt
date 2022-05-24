@@ -1,16 +1,14 @@
 package com.example.androiduidesign.onboardingscreen
 
-import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
-import com.example.androiduidesign.ONE
 import com.example.androiduidesign.R
-import com.example.androiduidesign.ZERO
 import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
+import com.example.androiduidesign.utils.ONE
+import com.example.androiduidesign.utils.ZERO
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_on_boarding.btn_onBoading
 import kotlinx.android.synthetic.main.activity_on_boarding.tab_layout
@@ -29,7 +27,6 @@ class OnBoardingActivity : AppCompatActivity() {
                 viewpager_onboarding.setCurrentItem(viewpager_onboarding.currentItem + ONE)
             } else {
                 btn_onBoading.text = getString(R.string.splash_screen_btn_txt_get_started)
-                Toast.makeText(this,getString(R.string.toast_test_get_started),Toast.LENGTH_SHORT).show()
             }
         }
         binding.viewpagerOnboarding.registerOnPageChangeCallback(object :

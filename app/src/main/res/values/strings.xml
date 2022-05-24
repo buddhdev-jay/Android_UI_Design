@@ -10,5 +10,26 @@
     <string name="onboarding_title_item_three">Face Id Feature for Easy Access and Secure Transactions</string>
     <string name="onboarding_des_item_three">There is a face ID feature that can be used with easy access and safe transactions.</string>
     <string name="splash_screen_btn_txt_get_started">Get Started</string>
-    <string name="toast_test_get_started">Get Started Clicked</string>
+    <string name="txtview_header_sign_in">Sign in</string>
+    <string name="txtview_signnin_tagline">Please sign in first to enjoy the service.</string>
+    <string name="txtview_text_email">Email</string>
+    <string name="txtview_text_password">Password</string>
+    <string name="checkbox_text_remeber_me">Remember me?</string>
+    <string name="textview_text_forgot_password">Forgot password?</string>
+    <string name="btn_text_sign_in">Sign In</string>
+    <string name="btn_text_face_id">Continue with Face Id</string>
+    <string name="btn_text_google">Continue with Google</string>
+    <string name="btn_text_facebook">Continue with Facebook</string>
+    <string name="textview_text_sign_in">Sign in</string>
+    <string name="textview_text_sign_up">Sign up</string>
+    <string name="textview_text_not_have_account">I don’t have a account? Sign up</string>
+    <string name="toast_text_sign_in_button_pressed">Sign In Button Pressed</string>
+    <string name="toast_email_empty">Email Empty</string>
+    <string name="toast_password_empty">password Empty</string>
+    <string name="toast_text_sign_up_button_pressed">Sign up Button Pressed</string>
+    <string name="face_id_clicked">Face Id Clicked</string>
+    <string name="facebook_clicked">FaceBook Button  Clicked</string>
+    <string name="google_clicked">Google Button Clicked</string>
+    <string name="forget_password_clicked">Forget Password Button Clicked</string>
+    <string name="toast_email_not_valid">Email is not Valid</string>
 </resources>
