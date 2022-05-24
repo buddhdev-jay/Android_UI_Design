@@ -22,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel(): RetrofitBaseViewModel() {
+class LoginViewModel(): BaseViewModel() {
 
     val password : MutableLiveData<String> = MutableLiveData()
     var email: MutableLiveData<String> = MutableLiveData()
@@ -44,8 +44,7 @@ class LoginViewModel(): RetrofitBaseViewModel() {
     }
 
     private fun performLoginApiCall() {
-        val retrofit = ApiInterface.create().loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
-        call(retrofit,object : ApiCallBackListener {
+        retrofitCall(retrofitClient.loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka")),object : ApiCallBackListener {
             override fun <T : Any> onSuccess(data: T) {
                 logInResult.postValue(LoginResponseModel(true, data))
             }

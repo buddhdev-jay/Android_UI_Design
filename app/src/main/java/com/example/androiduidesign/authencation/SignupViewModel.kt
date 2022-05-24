@@ -25,7 +25,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignupViewModel(): RetrofitBaseViewModel() {
+class SignupViewModel(): BaseViewModel() {
     val passwordStatus : MutableLiveData<Int> = MutableLiveData(ZERO)
     val password :MutableLiveData<String> = MutableLiveData()
     val cpassword : MutableLiveData<String> = MutableLiveData()
@@ -57,13 +57,12 @@ class SignupViewModel(): RetrofitBaseViewModel() {
         } else if(cpassword.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_confirm_password
         } else {
-            performLoginApiCall()
+            performSignupApiCall()
         }
     }
 
-    private fun performLoginApiCall() {
-        val retrofit = ApiInterface.create().signupUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka"))
-        call(retrofit,object : ApiCallBackListener {
+    private fun performSignupApiCall() {
+       retrofitCall(retrofitClient.signupUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka")),object : ApiCallBackListener {
             override fun <T : Any> onSuccess(data: T) {
                 signupResult.postValue(RegisterResponseModel(true, data))
             }

@@ -15,10 +15,10 @@ import retrofit2.http.Path
 
 interface ApiInterface {
 
-    @POST("/api/login")
+    @POST(REQRES_LOGIN_URL)
     fun loginUser(@Body userData: UserModel): Call<UserModel>
 
-    @POST("/api/register")
+    @POST(REQRES_SIGNUP_URL)
     fun signupUser(@Body userData: UserModel): Call<UserModel>
     companion object {
         private var interceptor = OkHttpProfilerInterceptor()
