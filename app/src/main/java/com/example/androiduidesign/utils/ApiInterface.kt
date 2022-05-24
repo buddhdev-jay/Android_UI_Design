@@ -1,6 +1,8 @@
 package com.example.androiduidesign.utils
 
 import com.example.androiduidesign.authencation.LoginModel
+import com.example.androiduidesign.authencation.LoginResponseModel
+import com.example.androiduidesign.authencation.RegisterResponseModel
 import com.example.androiduidesign.authencation.UserModel
 import com.localebro.okhttpprofiler.OkHttpProfilerInterceptor
 import okhttp3.Interceptor
@@ -16,10 +18,10 @@ import retrofit2.http.Path
 interface ApiInterface {
 
     @POST(REQRES_LOGIN_URL)
-    fun loginUser(@Body userData: UserModel): Call<UserModel>
+    fun loginUser(@Body userData: UserModel): Call<LoginResponseModel>
 
     @POST(REQRES_SIGNUP_URL)
-    fun signupUser(@Body userData: UserModel): Call<UserModel>
+    fun signupUser(@Body userData: UserModel): Call<RegisterResponseModel>
     companion object {
         private var interceptor = OkHttpProfilerInterceptor()
         private val okHttpClientBuilder = OkHttpClient.Builder().addInterceptor(interceptor)
