@@ -1,5 +1,6 @@
 package com.example.androiduidesign.dashboard
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.androiduidesign.R
+import com.example.androiduidesign.authencation.SignInActivity
 import com.example.androiduidesign.databinding.ActivityHomeScreenBinding
+import com.example.androiduidesign.utils.LOGIN_STATE
+import com.example.androiduidesign.utils.SHAREDPREF_NAME
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -87,6 +91,12 @@ class HomeScreenActivity : AppCompatActivity(),View.OnClickListener{
             }
             R.id.img_view_pay,R.id.text_view_pay -> {
                 Toast.makeText(this@HomeScreenActivity,getString(R.string.toast_pay_button_tapped),Toast.LENGTH_SHORT).show()
+            }
+            R.id.img_view_log_out -> {
+                val prefs = getSharedPreferences(SHAREDPREF_NAME, Context.MODE_PRIVATE)
+                prefs.edit().putBoolean(LOGIN_STATE,false).apply()
+                startActivity(Intent(this@HomeScreenActivity,SignInActivity::class.java))
+                finish()
             }
         }
     }

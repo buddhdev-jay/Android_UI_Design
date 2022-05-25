@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
+import android.text.Spannable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
@@ -24,8 +25,14 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.example.androiduidesign.R
 import com.example.androiduidesign.databinding.ActivityVerficationScreenBinding
+import com.example.androiduidesign.utils.ONE
+import com.example.androiduidesign.utils.ONETHOUSAND
+import com.example.androiduidesign.utils.SIXTHOUSAND
+import com.example.androiduidesign.utils.SIXTY
+import com.example.androiduidesign.utils.THIRTEEN
 import com.example.androiduidesign.utils.THIRTYTHREE
 import com.example.androiduidesign.utils.TWENTY
+import com.example.androiduidesign.utils.TWENTYFIVE
 import com.example.androiduidesign.utils.ZERO
 import com.example.androiduidesign.utils.getSpannable
 import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_four
@@ -36,19 +43,19 @@ import kotlinx.android.synthetic.main.activity_verfication_screen.edit_text_otp_
 class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
     lateinit var binding: ActivityVerficationScreenBinding
     val verficationViewModel: VerificationViewModel by viewModels()
-
+    var otpType : Int = ZERO
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verfication_screen)
         initialSetup()
 
         verficationViewModel.editTextOne.observe(this) {
-            if (it.length == 1) {
+            if (it.length == ONE) {
                 binding.editTextOtpTwo.requestFocus()
             }
         }
         verficationViewModel.editTextTwo.observe(this) {
-            if (it.length == 1) {
+            if (it.length == ONE) {
                 binding.editTextOtpThree.requestFocus()
             }
             if (it.isEmpty()) {
@@ -56,7 +63,7 @@ class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
             }
         }
         verficationViewModel.editTextThree.observe(this) {
-            if (it.length == 1) {
+            if (it.length == ONE) {
                 binding.editTextOtpFour.requestFocus()
             }
             if (it.isEmpty()) {
@@ -64,7 +71,7 @@ class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
             }
         }
         verficationViewModel.editTextFour.observe(this) {
-            if (it.length == 1) {
+            if (it.length == ONE) {
                 binding.editTextOtpFour.clearFocus()
                 val hideKeyboard = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
                 hideKeyboard?.hideSoftInputFromWindow(binding.editTextOtpFour.windowToken, ZERO)
@@ -84,18 +91,22 @@ class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
             lifecycleOwner = this@VerficationScreenActivity
             onClickHandler = this@VerficationScreenActivity
         }
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        otpType = intent.getIntExtra("otpType", ZERO)
+        if(otpType == 0) {
+            binding.txtViewForgetPasswordTagline.text = getString(R.string.textview_text_verfication_tag_line_email)
+        } else {
+            binding.txtViewForgetPasswordTagline.text = getString(R.string.textview_text_verfication_tag_line)
+        }
         countDownTimer()
     }
 
     private fun countDownTimer() {
-        object : CountDownTimer(60000, 1000) {
-
+        object : CountDownTimer(SIXTHOUSAND.toLong(), ONETHOUSAND.toLong()) {
             override fun onTick(millisUntilFinished: Long) {
-                val m = (millisUntilFinished / 1000) / 60
-                val s = (millisUntilFinished / 1000) % 60
+                val m = (millisUntilFinished / ONETHOUSAND) / SIXTY
+                val s = (millisUntilFinished / ONETHOUSAND) % SIXTY
                 val format = String.format(getString(R.string.otp_time_format), m, s)
-                binding.textViewTextResendCode.text = getString(R.string.text_resend_code,format)
+                binding.textViewTextResendCode.text = getString(R.string.text_resend_code, format)
             }
 
             override fun onFinish() {
@@ -105,13 +116,24 @@ class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
     }
 
 
-
     private fun setSpannableText() {
-        val spannable = getSpannable(binding.textviewUpdateNumber.text.toString(), TWENTY, THIRTYTHREE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)) {
-            val signInIntent = Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
-            startActivity(signInIntent)
-            finish()
+        val spannable : Spannable
+        if (otpType == 0) {
+            binding.textviewUpdateNumber.text = getString(R.string.text_view_text_update_email)
+            spannable = getSpannable(binding.textviewUpdateNumber.text.toString(), THIRTEEN, TWENTYFIVE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)) {
+                val signInIntent = Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
+        } else {
+            binding.textviewUpdateNumber.text = getString(R.string.text_view_text_update_number)
+            spannable = getSpannable(binding.textviewUpdateNumber.text.toString(), TWENTY, THIRTYTHREE, ContextCompat.getColor(this@VerficationScreenActivity, R.color.green_500)) {
+                val signInIntent = Intent(this@VerficationScreenActivity, ForgetPasswordActivity::class.java)
+                startActivity(signInIntent)
+                finish()
+            }
         }
+
         binding.textviewUpdateNumber.apply {
             text = spannable
             movementMethod = LinkMovementMethod.getInstance()

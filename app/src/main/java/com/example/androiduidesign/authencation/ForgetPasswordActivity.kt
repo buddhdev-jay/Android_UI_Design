@@ -52,7 +52,6 @@ class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
             onClickHandler = this@ForgetPasswordActivity
 
         }
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     private fun setSpannableText() {
@@ -81,7 +80,14 @@ class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
                 }
             }
             R.id.btn_send_code_forget_password -> {
-                startActivity(Intent(this@ForgetPasswordActivity, VerficationScreenActivity::class.java))
+
+                val intent = Intent(this@ForgetPasswordActivity, VerficationScreenActivity::class.java)
+                if(binding.checkBoxEmail.isChecked) {
+                    intent.putExtra("otpType",0)
+                } else {
+                    intent.putExtra("otpType",1)
+                }
+                startActivity(intent)
                 finish()
             }
             R.id.img_view_back_arrow_forget_password -> {

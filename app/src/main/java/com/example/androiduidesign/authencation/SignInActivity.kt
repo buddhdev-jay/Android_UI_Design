@@ -1,6 +1,8 @@
 package com.example.androiduidesign.authencation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
@@ -19,7 +21,10 @@ import com.example.androiduidesign.R
 import com.example.androiduidesign.dashboard.HomeScreenActivity
 import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
+import com.example.androiduidesign.utils.LOGIN_STATE
 import com.example.androiduidesign.utils.NINETEEN
+import com.example.androiduidesign.utils.SHAREDPREF_NAME
+import com.example.androiduidesign.utils.SPLASHSCREEN_STATE
 import com.example.androiduidesign.utils.THIRTYONE
 import com.example.androiduidesign.utils.TWENETYFOUR
 import com.example.androiduidesign.utils.TWENTYSIX
@@ -33,6 +38,7 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialSetup()
+
         binding.textviewNotHaveAccount.setOnClickListener {
             startActivity(Intent(this,SignupActivity::class.java))
         }
@@ -41,15 +47,19 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
             if (response.isSuccess) {
                 binding.progressbarSignIn.visibility = View.INVISIBLE
                 showMessage(this, getString(R.string.login_successful))
+                val prefs = getSharedPreferences(SHAREDPREF_NAME, Context.MODE_PRIVATE)
+                prefs.edit().putBoolean(LOGIN_STATE,true).apply()
                 startActivity(Intent(this@SignInActivity, HomeScreenActivity::class.java))
                 finish()
             } else {
+                binding.btnSignIn.visibility = View.VISIBLE
                 binding.progressbarSignIn.visibility = View.INVISIBLE
                 showMessage(this, getString(R.string.login_unsuccessful))
             }
         }
         loginViewModel.validationResult.observe(this) { validationResult ->
-            if(getString(validationResult).equals(R.string.validation_sucessful)){
+            if(getString(validationResult) ==  getString(R.string.validation_sucessful)){
+                binding.btnSignIn.visibility = View.INVISIBLE
                 binding.progressbarSignIn.visibility = View.VISIBLE
             } else {
                 showMessage(this, getString(validationResult))
@@ -73,7 +83,6 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         setSpannableText()
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         binding.apply {
             viewModel = loginViewModel
             onClickHandler = this@SignInActivity
@@ -82,7 +91,7 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            R.id.btn_signup -> {
+            R.id.btn_sign_in -> {
                 loginViewModel.performValidation()
             }
             R.id.btn_face_id -> {

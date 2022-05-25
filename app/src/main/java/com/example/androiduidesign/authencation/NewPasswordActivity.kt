@@ -30,7 +30,6 @@ class NewPasswordActivity : AppCompatActivity(), View.OnClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_new_password)
         setSpannableText()
         binding.onClickHandler = this@NewPasswordActivity
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     private fun setSpannableText() {

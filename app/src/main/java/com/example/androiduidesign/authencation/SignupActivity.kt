@@ -42,13 +42,15 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
                 startActivity(Intent(this@SignupActivity,SignInActivity::class.java))
                 finish()
             } else {
+                binding.btnSignup.visibility = View.VISIBLE
                 binding.progressbarSignUp.visibility = View.INVISIBLE
                 showMessage(this,getString(R.string.user_not_created))
             }
         }
         signupViewModel.validationResult.observe(this){validationResult ->
-            if(getString(validationResult).equals(R.string.validation_sucessful)){
+            if(getString(validationResult) == getString(R.string.validation_sucessful)){
                 binding.progressbarSignUp.visibility = View.VISIBLE
+                binding.btnSignup.visibility = View.INVISIBLE
             } else {
                 showMessage(this, getString(validationResult))
             }
@@ -88,12 +90,11 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
             onClickHandler = this@SignupActivity
         }
         setSpannableText()
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     private fun setSpannableText() {
         val spannable = getSpannable(binding.textviewNotHaveAccount.text.toString(), NINETEEN, TWENTYSIX, ContextCompat.getColor(this@SignupActivity, R.color.green_500)) {
-            val signInIntent = Intent(this@SignupActivity, ForgetPasswordActivity::class.java)
+            val signInIntent = Intent(this@SignupActivity, SignInActivity::class.java)
             startActivity(signInIntent)
             finish()
         }
@@ -111,7 +112,6 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
                     finish()
                 }
                 btnSignup -> {
-                    binding.progressbarSignUp.visibility = View.VISIBLE
                     signupViewModel.performValidation()
                 }
             }

@@ -32,32 +32,37 @@ class SignupViewModel(): BaseViewModel() {
     val cpassword : MutableLiveData<String> = MutableLiveData()
     val signupResult = MutableLiveData<RegisterResponseModel>()
     val validationResult = MutableLiveData<Int>()
+    val termsAndCondtionCheck = MutableLiveData<Boolean>()
     var email: MutableLiveData<String> = MutableLiveData()
     var name: MutableLiveData<String> = MutableLiveData()
     var mobileNo: MutableLiveData<String> = MutableLiveData()
 
     fun performValidation() {
 
-        if (email.value.isNullOrEmpty()) {
+         if (name.value.isNullOrEmpty()) {
+            validationResult.value = R.string.toast_name_empty
+            return
+        } else if (email.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_email_empty
+            return
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(email.value).matches()) {
+            validationResult.value = R.string.toast_email_not_valid
             return
         } else if (mobileNo.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_phone_empty
             return
-        } else if (name.value.isNullOrEmpty()) {
-            validationResult.value = R.string.toast_name_empty
-            return
-        } else if (mobileNo.value?.length ?: TEN < TEN) {
-            validationResult.value = R.string.toast_valid_phone
-            return
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email.value).matches()) {
-            validationResult.value = R.string.toast_email_not_valid
-            return
-        } else if (password.value.isNullOrEmpty()) {
+        }  else if (password.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_password_empty
         } else if(cpassword.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_confirm_password
-        } else {
+        } else if (mobileNo.value?.length ?: TEN < TEN) {
+             validationResult.value = R.string.toast_valid_phone
+             return
+         } else if(termsAndCondtionCheck.value == true) {
+             validationResult.value = R.string.terms_and_condition_not_checked
+             return
+         }
+         else {
             validationResult.value = R.string.validation_sucessful
             performSignupApiCall()
         }
