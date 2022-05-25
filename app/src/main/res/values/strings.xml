@@ -61,7 +61,7 @@
     <string name="brn_text_verify">Verify</string>
     <string name="text_view_text_update_number">Wrong phone number? Update number</string>
     <string name="toast_enter_otp">Enter OTP</string>
-    <string name="toast_verfication_button_tapped">Verfication Button Taped</string>
+    <string name="toast_verfication_button_tapped">You are Verified Change Password</string>
     <string name="text_resend_code">Resend Code in %s</string>
     <string name="text_view_text_your_location">Your Location</string>
     <string name="text_view_text_sample_location">Jl. Mahakarya No.21</string>
@@ -109,6 +109,14 @@
     <string name="user_created_message">User Created SuccessFully</string>
     <string name="user_not_created">Sorry User not Created Please Try Again</string>
     <string name="text_api_response">API Response</string>
+    <string name="validation_sucessful">Data is Valid</string>
+    <string name="otp_time_format">%02d:%02d</string>
+    <string name="text_view_text_set_new_password">Set New Password</string>
+    <string name="text_view_text_set_new_password_tag_line">Create your new password so you can share your memories again.</string>
+    <string name="btn_text_change_password">Change Password</string>
+    <string name="text_change_password_clicked">Change Password Button Clicked</string>
+    <string name="text_password_confirm_password_not_equal">Password and Confirm Password is not equal</string>
+    <string name="text_request_again">Please Request Again for OTP</string>
     <string-array name="countryCodes">
         <item>+93</item>
         <item>+355</item>

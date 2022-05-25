@@ -11,6 +11,7 @@ import com.example.androiduidesign.utils.BASE_URL
 import com.example.androiduidesign.utils.EMAIL
 import com.example.androiduidesign.utils.PASSWORD
 import com.example.androiduidesign.utils.POST
+import com.example.androiduidesign.utils.RetrofitObject
 import com.example.androiduidesign.utils.SIGNUP_URL
 import com.example.androiduidesign.utils.TEN
 import com.example.androiduidesign.utils.ZERO
@@ -57,12 +58,13 @@ class SignupViewModel(): BaseViewModel() {
         } else if(cpassword.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_confirm_password
         } else {
+            validationResult.value = R.string.validation_sucessful
             performSignupApiCall()
         }
     }
 
     private fun performSignupApiCall() {
-       retrofitCall(retrofitClient.signupUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka")),object : ApiCallBackListener {
+       retrofitCall(RetrofitObject.retrofitClient.signupUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka")),object : ApiCallBackListener {
             override fun <T : Any> onSuccess(data: T) {
                 signupResult.postValue(RegisterResponseModel(true, data))
             }

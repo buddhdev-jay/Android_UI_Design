@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
 
         <variable
@@ -93,9 +94,9 @@
                     android:focusable="true"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
-                    android:text="@={viewModel.password}"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:text="@={viewModel.password}"
                     android:textSize="@dimen/_10ssp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,20 +121,23 @@
                 android:layout_marginTop="@dimen/_25sdp"
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:fontFamily="@font/manropesemibold"
+                android:onClick="@{onClickHandler::onClick}"
                 android:text="@string/textview_text_forgot_password"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
+
             <ProgressBar
                 android:id="@+id/progressbar_sign_in"
-                android:visibility="invisible"
-                app:layout_constraintTop_toBottomOf="@id/btn_sign_in"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:indeterminateTint="@color/green_500"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/green_500"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_sign_in" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_in"
                 android:layout_width="match_parent"
@@ -143,9 +147,9 @@
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:background="@drawable/button_background"
                 android:fontFamily="@font/manropebold"
+                android:onClick="@{onClickHandler::onClick}"
                 android:text="@string/btn_text_sign_in"
                 android:textAlignment="center"
-                android:onClick="@{onClickHandler::onClick}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@id/textview_forget_password" />
@@ -196,8 +200,8 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/face_id_icone"
                 android:fontFamily="@font/manropemedium"
-                android:text="@string/btn_text_face_id"
                 android:onClick="@{onClickHandler::onClick}"
+                android:text="@string/btn_text_face_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_Or" />
 
@@ -208,9 +212,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/google_icone"
+                android:onClick="@{onClickHandler::onClick}"
                 android:text="@string/btn_text_google"
                 app:layout_constraintStart_toStartOf="parent"
-                android:onClick="@{onClickHandler::onClick}"
                 app:layout_constraintTop_toBottomOf="@id/btn_face_id" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -220,8 +224,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableStart="@drawable/facebook_icone"
-                android:text="@string/btn_text_facebook"
                 android:onClick="@{onClickHandler::onClick}"
+                android:text="@string/btn_text_facebook"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_google" />

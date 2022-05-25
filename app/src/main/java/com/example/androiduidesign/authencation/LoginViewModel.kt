@@ -11,6 +11,7 @@ import com.example.androiduidesign.utils.EMAIL
 import com.example.androiduidesign.utils.LOGIN_URL
 import com.example.androiduidesign.utils.PASSWORD
 import com.example.androiduidesign.utils.POST
+import com.example.androiduidesign.utils.RetrofitObject
 import com.example.androiduidesign.webservice.with_retrofit.ApiCallBackListener
 import com.example.androiduidesign.webservice.with_retrofit.ErrorResponse
 import com.example.androiduidesign.webservice.with_retrofit.RetrofitBaseViewModel
@@ -39,12 +40,13 @@ class LoginViewModel(): BaseViewModel() {
         } else if (password.value.isNullOrEmpty()) {
             validationResult.value = R.string.toast_password_empty
         } else {
+            validationResult.value = R.string.validation_sucessful
             performLoginApiCall()
         }
     }
 
     private fun performLoginApiCall() {
-        retrofitCall(retrofitClient.loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka")),object : ApiCallBackListener {
+        retrofitCall(RetrofitObject.retrofitClient.loginUser(UserModel(email.value ?: "eve.holt@reqres.in",password.value ?: "cityslicka")),object : ApiCallBackListener {
             override fun <T : Any> onSuccess(data: T) {
                 logInResult.postValue(LoginResponseModel(true, data))
             }

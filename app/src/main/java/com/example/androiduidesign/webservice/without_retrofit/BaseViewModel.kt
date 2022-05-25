@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androiduidesign.utils.ApiInterface
+import com.example.androiduidesign.utils.RetrofitObject
 import com.example.androiduidesign.webservice.with_retrofit.ApiCallBackListener
 import com.example.androiduidesign.webservice.with_retrofit.ErrorResponse
 import com.google.gson.GsonBuilder
@@ -21,6 +22,8 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 open class BaseViewModel():ViewModel(){
 
@@ -46,7 +49,8 @@ open class BaseViewModel():ViewModel(){
         }
     }
 
-    val retrofitClient = ApiInterface.create()
+
+
     fun<T: Any> retrofitCall(retrofitCall: Call<T>, apiCallBackListener: ApiCallBackListener) {
         retrofitCall.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {

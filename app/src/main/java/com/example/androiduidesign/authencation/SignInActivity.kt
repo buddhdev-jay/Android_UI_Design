@@ -49,7 +49,11 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
             }
         }
         loginViewModel.validationResult.observe(this) { validationResult ->
-            showMessage(this, getString(validationResult))
+            if(getString(validationResult).equals(R.string.validation_sucessful)){
+                binding.progressbarSignIn.visibility = View.VISIBLE
+            } else {
+                showMessage(this, getString(validationResult))
+            }
         }
     }
 
@@ -77,21 +81,21 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        binding.apply {
-            when (p0) {
-                btnSignIn -> {
-                    progressbarSignIn.visibility = View.VISIBLE
-                    loginViewModel.performValidation()
-                }
-                btnFaceId -> {
-                    showMessage(this@SignInActivity, getString(R.string.face_id_clicked))
-                }
-                btnFacebook -> {
-                    showMessage(this@SignInActivity, getString(R.string.facebook_clicked))
-                }
-                btnGoogle -> {
-                    showMessage(this@SignInActivity, getString(R.string.google_clicked))
-                }
+        when (p0?.id) {
+            R.id.btn_signup -> {
+                loginViewModel.performValidation()
+            }
+            R.id.btn_face_id -> {
+                showMessage(this@SignInActivity, getString(R.string.face_id_clicked))
+            }
+            R.id.btn_facebook -> {
+                showMessage(this@SignInActivity, getString(R.string.facebook_clicked))
+            }
+            R.id.btn_google -> {
+                showMessage(this@SignInActivity, getString(R.string.google_clicked))
+            }
+            R.id.textview_forget_password -> {
+                startActivity(Intent(this,ForgetPasswordActivity::class.java))
             }
         }
     }

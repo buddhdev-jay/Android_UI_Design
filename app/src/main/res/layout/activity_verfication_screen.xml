@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="com.example.androiduidesign.authencation.VerificationViewModel" />
+
+        <variable
+            name="onClickHandler"
+            type="android.view.View.OnClickListener" />
     </data>
 
 
@@ -26,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_24sdp"
                 android:layout_marginTop="@dimen/_28sdp"
+                android:onClick="@{onClickHandler::onClick}"
                 android:src="@drawable/ic_baseline_keyboard_backspace_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -131,6 +136,7 @@
                 android:layout_marginEnd="@dimen/_24sdp"
                 android:background="@drawable/button_background"
                 android:fontFamily="@font/manropebold"
+                android:onClick="@{onClickHandler::onClick}"
                 android:text="@string/brn_text_verify"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"

@@ -45,7 +45,13 @@ class SignupActivity : AppCompatActivity() , View.OnClickListener{
                 binding.progressbarSignUp.visibility = View.INVISIBLE
                 showMessage(this,getString(R.string.user_not_created))
             }
-
+        }
+        signupViewModel.validationResult.observe(this){validationResult ->
+            if(getString(validationResult).equals(R.string.validation_sucessful)){
+                binding.progressbarSignUp.visibility = View.VISIBLE
+            } else {
+                showMessage(this, getString(validationResult))
+            }
         }
         signupViewModel.password.observe(this) { password ->
             password.apply {

@@ -39,14 +39,6 @@ class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
                 checkBoxPhone.isChecked = value
                 checkBoxEmail.isChecked = !value
             }
-            btnSendCodeForgetPassword.setOnClickListener {
-                startActivity(Intent(this@ForgetPasswordActivity, VerficationScreenActivity::class.java))
-                finish()
-            }
-            img_view_back_arrow_forget_password.setOnClickListener {
-                startActivity(Intent(this@ForgetPasswordActivity, SignInActivity::class.java))
-                finish()
-            }
         }
     }
 
@@ -66,7 +58,7 @@ class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
     private fun setSpannableText() {
 
         val spannable = getSpannable(binding.textviewHaveAccountForgetPassword.text.toString(), THIRTYONE, THIRTYEIGHT, ContextCompat.getColor(this@ForgetPasswordActivity, R.color.green_500)) {
-            val signInIntent = Intent(this@ForgetPasswordActivity, ForgetPasswordActivity::class.java)
+            val signInIntent = Intent(this@ForgetPasswordActivity, SignInActivity::class.java)
             startActivity(signInIntent)
             finish()
         }
@@ -87,6 +79,14 @@ class ForgetPasswordActivity : AppCompatActivity() ,View.OnClickListener{
                 binding.apply {
                     checkBoxPhone.isChecked = !checkBoxPhone.isChecked
                 }
+            }
+            R.id.btn_send_code_forget_password -> {
+                startActivity(Intent(this@ForgetPasswordActivity, VerficationScreenActivity::class.java))
+                finish()
+            }
+            R.id.img_view_back_arrow_forget_password -> {
+                startActivity(Intent(this@ForgetPasswordActivity, SignInActivity::class.java))
+                finish()
             }
         }
     }
