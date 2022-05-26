@@ -47,6 +47,9 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
 
         loginViewModel.logInResult.observe(this) { response ->
             if (response.isSuccess) {
+                if(loginViewModel.checkedRememberMe.value == true) {
+                    prefs.edit().putString(REMEMBER_ME,loginViewModel.email.value).apply()
+                }
                 binding.progressbarSignIn.visibility = View.INVISIBLE
                 showMessage(this, getString(R.string.login_successful))
                 prefs.edit().putBoolean(LOGIN_STATE,true).apply()
@@ -97,10 +100,6 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.btn_sign_in -> {
-                if(loginViewModel.checkedRemberMe.value == true) {
-                    prefs.edit().putString(REMEMBER_ME,loginViewModel.email.value).apply()
-                }
-                loginViewModel.checkedRemberMe.value
                 loginViewModel.performValidation()
             }
             R.id.btn_face_id -> {

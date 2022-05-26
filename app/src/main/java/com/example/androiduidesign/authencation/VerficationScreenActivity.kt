@@ -85,7 +85,6 @@ class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
     private fun initialSetup() {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_verfication_screen)
-        setSpannableText()
         binding.apply {
             viewModel = verficationViewModel
             lifecycleOwner = this@VerficationScreenActivity
@@ -97,6 +96,7 @@ class VerficationScreenActivity : AppCompatActivity(),View.OnClickListener {
         } else {
             binding.txtViewForgetPasswordTagline.text = getString(R.string.textview_text_verfication_tag_line)
         }
+        setSpannableText()
         countDownTimer()
     }
 

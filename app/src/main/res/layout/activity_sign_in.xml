@@ -110,7 +110,7 @@
                 android:buttonTint="@color/grey"
                 android:text="@string/checkbox_text_remeber_me"
                 android:textColor="@color/grey"
-                android:checked="@={viewModel.checkedRemberMe}"
+                android:checked="@={viewModel.checkedRememberMe}"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_layout_password" />
