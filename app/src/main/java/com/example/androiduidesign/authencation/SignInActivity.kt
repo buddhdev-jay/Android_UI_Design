@@ -23,6 +23,7 @@ import com.example.androiduidesign.databinding.ActivityOnBoardingBinding
 import com.example.androiduidesign.databinding.ActivitySignInBinding
 import com.example.androiduidesign.utils.LOGIN_STATE
 import com.example.androiduidesign.utils.NINETEEN
+import com.example.androiduidesign.utils.REMEMBER_ME
 import com.example.androiduidesign.utils.SHAREDPREF_NAME
 import com.example.androiduidesign.utils.SPLASHSCREEN_STATE
 import com.example.androiduidesign.utils.THIRTYONE
@@ -34,6 +35,7 @@ import com.example.androiduidesign.utils.showMessage
 class SignInActivity : AppCompatActivity(),View.OnClickListener {
     lateinit var binding: ActivitySignInBinding
     val loginViewModel : LoginViewModel by viewModels()
+    lateinit var prefs : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,6 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
             if (response.isSuccess) {
                 binding.progressbarSignIn.visibility = View.INVISIBLE
                 showMessage(this, getString(R.string.login_successful))
-                val prefs = getSharedPreferences(SHAREDPREF_NAME, Context.MODE_PRIVATE)
                 prefs.edit().putBoolean(LOGIN_STATE,true).apply()
                 startActivity(Intent(this@SignInActivity, HomeScreenActivity::class.java))
                 finish()
@@ -83,15 +84,23 @@ class SignInActivity : AppCompatActivity(),View.OnClickListener {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         setSpannableText()
+        prefs = getSharedPreferences(SHAREDPREF_NAME, Context.MODE_PRIVATE)
         binding.apply {
             viewModel = loginViewModel
             onClickHandler = this@SignInActivity
+        }
+        prefs.getString(REMEMBER_ME,null).let { email ->
+            loginViewModel.email.value = email
         }
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.btn_sign_in -> {
+                if(loginViewModel.checkedRemberMe.value == true) {
+                    prefs.edit().putString(REMEMBER_ME,loginViewModel.email.value).apply()
+                }
+                loginViewModel.checkedRemberMe.value
                 loginViewModel.performValidation()
             }
             R.id.btn_face_id -> {

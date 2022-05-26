@@ -28,6 +28,7 @@ class LoginViewModel(): BaseViewModel() {
     val password : MutableLiveData<String> = MutableLiveData()
     var email: MutableLiveData<String> = MutableLiveData()
     val logInResult = MutableLiveData<LoginResponseModel>()
+    val checkedRemberMe =  MutableLiveData<Boolean>()
     val validationResult = MutableLiveData<Int>()
 
     fun performValidation() {
